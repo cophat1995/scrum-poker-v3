@@ -32,11 +32,7 @@ export class ScrumDetails {
     if(this.autoHide_value == null)
       this.currentDeg = 'rotateY(0)';
     else this.currentDeg = this.autoHide_value;
-
-    if(this.sound_value == 'true')
-      this.nativeAudio.preloadSimple('card', 'assets/audio/card.WAV');  
-    else
-      this.nativeAudio.preloadSimple('','');
+    this.nativeAudio.preloadSimple('card', 'assets/audio/card.WAV');  
   }
   roTate(){
     var randomIndex = Math.floor((Math.random() * 6) + 1);
@@ -48,7 +44,11 @@ export class ScrumDetails {
       this.currentDeg = 'rotateY(0)';
       document.getElementById("item").style.transform = 'rotateY(0)';
     }
-    this.nativeAudio.play('card');
+    if(this.sound_value == 'true')
+      this.nativeAudio.play('card');
+    else
+      this.nativeAudio.unload('card');
+
   }
   timeOver(){
     this.navCtrl.push(TimeDetails);
