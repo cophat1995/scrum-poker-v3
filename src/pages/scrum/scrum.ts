@@ -53,7 +53,7 @@ export class Scrum {
       }
     }
     var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
-    for(var i = this.arrCard.length; i < maxCard; i++)
+    for(var j = this.arrCard.length; j < maxCard; j++)
       this.arrCard[i] = "" + this.SPECIAL_SEQUENCE[i-this.arrCard.length];
   }
   changeSegment() {
