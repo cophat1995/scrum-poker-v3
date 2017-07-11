@@ -41,7 +41,7 @@
         </ion-item>
         <ion-item>
           <ion-label  class="label-md">Card Sounds</ion-label>
-          <ion-toggle color="dark"></ion-toggle>
+          <ion-toggle [(ngModel)]="sound_value" (ionChange)="soundOn()" color="dark"></ion-toggle>
         </ion-item>
         <ion-item>
           <ion-label  class="label-md">Keep Screen on</ion-label>

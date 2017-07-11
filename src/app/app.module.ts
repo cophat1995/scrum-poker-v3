@@ -11,6 +11,7 @@ import { ScrumDetails } from '../pages/scrum-details/scrum-details';
 import { TimeDetails } from '../pages/time/time';
 
 import { Insomnia } from '@ionic-native/insomnia';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { Insomnia } from '@ionic-native/insomnia';
   ],
   providers: [
     Insomnia,
+    NativeAudio,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

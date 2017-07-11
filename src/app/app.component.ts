@@ -5,9 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 
 import { Scrum } from '../pages/scrum/scrum';
-//import { TimeDetails } from '../time/time';
 
 import { Insomnia } from '@ionic-native/insomnia';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -24,12 +24,13 @@ export class MyApp {
   model:any = {};
   autoHide_value:boolean;
   keepScreen_value:boolean;
+  sound_value:boolean;
 
   constructor(storage: Storage, 
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    private insomnia: Insomnia) {
+    private insomnia: Insomnia ) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.loadData();
@@ -68,15 +69,17 @@ export class MyApp {
     if( localStorage.getItem('autoHide_value') == 'rotateY(180deg)'){
       this.autoHide_value = true
     }
-    else{
-      this.autoHide_value = false
+    else{this.autoHide_value = false}
+
+    if( localStorage.getItem('sound_value') == 'true'){
+      this.sound_value = true
     }
+    else{this.sound_value = false}
+
     if( localStorage.getItem('keepScreen_value') == 'true'){
       this.keepScreen_value = true
     }
-    else{
-      this.keepScreen_value = false
-    }
+    else{this.keepScreen_value = false}
     this.changeScreen(this.keepScreen_value);
   }       
   changeBackground(){
@@ -137,6 +140,19 @@ export class MyApp {
         this.insomnia.allowSleepAgain();
       }
   }
+  soundOn(){
+    if (typeof(Storage) !== "undefined") {
+      if(this.sound_value == true){
+        localStorage.setItem('sound_value', 'true');
+      }
+      else{
+        localStorage.setItem('sound_value', 'false');
+      }
+    } else {
+      // using session
+    }
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
