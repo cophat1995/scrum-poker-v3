@@ -31,8 +31,8 @@ export class Scrum {
     var sequenceType; // fibonaci, planing-pocker, natural, t-shirt
     var backgroundColor; // default is #fffff;\
     if (typeof(Storage) !== "undefined") {
-       backgroundColor = sessionStorage.getItem('backgroundColor');
-      this.maxCardNumber = parseInt(sessionStorage.getItem('maxCardNumber')) || 200;
+       backgroundColor = localStorage.getItem('backgroundColor');
+      this.maxCardNumber = parseInt(localStorage.getItem('maxCardNumber')) || 200;
     }
     if(sequenceType == null){
        sequenceType = "fibonaci"; // fibonaci, planing-pocker, natural, t-shirt

@@ -35,10 +35,6 @@ export class MyApp {
     this.loadData();
   }
   loadData(){
-    this.pages = [
-      { title: 'Scrum', component: Scrum }
-    ];
-
     this.deckcolors = [
       { value: 'white',title: 'White'},
       { value: 'gainsboro',title: 'Gainsboro'},
@@ -55,11 +51,11 @@ export class MyApp {
       { value: '5', title: '5'},
       { value: '3', title: '3'},
     ]
-    
     // load data to the UI
-    this.model.background = sessionStorage.getItem('backgroundColor');
-    this.model.maxCardNumber = sessionStorage.getItem('maxCardNumber');
-    this.model.duration = sessionStorage.getItem('duraTion');
+    this.model.background = localStorage.getItem('backgroundColor');
+    this.model.maxCardNumber = localStorage.getItem('maxCardNumber');
+    this.model.duration = localStorage.getItem('duraTion');
+
     if(this.model.background == null)
       this.model.background = 'white';
 
@@ -69,15 +65,24 @@ export class MyApp {
     if(this.model.duration == null)
       this.model.duration = 10;
 
-    if( sessionStorage.getItem('autoHide_value') == 'rotateY(180deg)')
-        this.autoHide_value = true
-    else
-        this.autoHide_value = false
+    if( localStorage.getItem('autoHide_value') == 'rotateY(180deg)'){
+      this.autoHide_value = true
+    }
+    else{
+      this.autoHide_value = false
+    }
+    if( localStorage.getItem('keepScreen_value') == 'true'){
+      this.keepScreen_value = true
+    }
+    else{
+      this.keepScreen_value = false
+    }
+    this.changeScreen(this.keepScreen_value);
   }       
   changeBackground(){
     var backgroundColor = this.model.background;
     if (typeof(Storage) !== "undefined") {
-      sessionStorage.setItem('backgroundColor', backgroundColor);
+      localStorage.setItem('backgroundColor', backgroundColor);
     } else {
       // using session
     }
@@ -86,7 +91,7 @@ export class MyApp {
   changeLargest(){
     var maxCardNumber = this.model.maxCardNumber;
     if (typeof(Storage) !== "undefined") {
-      sessionStorage.setItem('maxCardNumber', maxCardNumber);
+      localStorage.setItem('maxCardNumber', maxCardNumber);
     } else {
       // using session
     }
@@ -95,7 +100,7 @@ export class MyApp {
   changeDuration(){
     var duraTion = this.model.duration;
     if (typeof(Storage) !== "undefined") {
-      sessionStorage.setItem('duraTion', duraTion);
+      localStorage.setItem('duraTion', duraTion);
     } else {
       // using session
     }
@@ -104,19 +109,33 @@ export class MyApp {
   autoHide(){
     if (typeof(Storage) !== "undefined") {
       if(this.autoHide_value == true)
-        sessionStorage.setItem('autoHide_value', 'rotateY(180deg)');
+        localStorage.setItem('autoHide_value', 'rotateY(180deg)');
       else
-        sessionStorage.setItem('autoHide_value', 'rotateY(0)');
+        localStorage.setItem('autoHide_value', 'rotateY(0)');
     } else {
       // using session
     }
   }
   keepScreenOn(){
-    if(this.keepScreen_value == true)
-      this.insomnia.keepAwake();
-    else {
-      this.insomnia.allowSleepAgain();
+    if (typeof(Storage) !== "undefined") {
+      if(this.keepScreen_value == true){
+        localStorage.setItem('keepScreen_value', 'true');
+      }
+      else{
+        localStorage.setItem('keepScreen_value', 'false');
+      }
+    } else {
+      // using session
     }
+    this.changeScreen(this.keepScreen_value);
+  }
+  changeScreen(screen){
+     if(screen == true){
+        this.insomnia.keepAwake();
+      }
+      else{
+        this.insomnia.allowSleepAgain();
+      }
   }
   initializeApp() {
     this.platform.ready().then(() => {
