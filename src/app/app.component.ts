@@ -14,19 +14,27 @@ import { Insomnia } from '@ionic-native/insomnia';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  insomnia: Insomnia;
   rootPage: any = Scrum;
   pages: Array<{title: string, component: any}>;
   mainPage: any = Scrum;
+  
   deckcolors =[];
   largestCard =[];
   deckTime = [];
   model:any = {};
   autoHide_value:boolean;
   keepScreen_value:boolean;
-  constructor(storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,) {
+
+  constructor(storage: Storage, 
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    private insomnia: Insomnia) {
     this.initializeApp();
     // used for an example of ngFor and navigation
+    this.loadData();
+  }
+  loadData(){
     this.pages = [
       { title: 'Scrum', component: Scrum }
     ];
@@ -104,15 +112,11 @@ export class MyApp {
     }
   }
   keepScreenOn(){
-      if (typeof(Storage) !== "undefined") {
-        if(this.keepScreen_value == true)
-          this.insomnia.keepAwake();
-        else {
-          this.insomnia.allowSleepAgain();
-        }
-      } else {
-        // using session
-      }
+    if(this.keepScreen_value == true)
+      this.insomnia.keepAwake();
+    else {
+      this.insomnia.allowSleepAgain();
+    }
   }
   initializeApp() {
     this.platform.ready().then(() => {

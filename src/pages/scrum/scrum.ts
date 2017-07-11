@@ -54,7 +54,7 @@ export class Scrum {
     }
     var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
     for(var j = this.arrCard.length; j < maxCard; j++)
-      this.arrCard[i] = "" + this.SPECIAL_SEQUENCE[i-this.arrCard.length];
+      this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
   }
   changeSegment() {
     var curSequenceArray = [];
