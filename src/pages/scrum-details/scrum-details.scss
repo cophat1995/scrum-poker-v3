@@ -1,0 +1,67 @@
+.scrum-detail-scss{
+    .scroll-content{
+    background: #808080; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#808080, #999999, #595959, #0d0d0d);
+    background: -moz-linear-gradient(#808080, #999999, #595959, #0d0d0d);
+    background: -o-linear-gradient(#808080, #999999, #595959, #0d0d0d);
+    background: linear-gradient(#808080, #999999, #595959, #0d0d0d); /* For Safari 5.1 to 6.0 */ /* For Opera 11.1 to 12.0 */ /* For Firefox 3.6 to 15 */
+  }
+}
+.scroll-content-child{
+    padding-top: 3em;
+}
+/* flip speed goes here */
+.flipper {
+    width: 11em;
+    height: 17em;
+    transition: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+    text-align: center;
+    position: initial;
+    margin: auto;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* front pane, placed above back */
+.front {
+    border: ridge #ddd;
+    border-radius: 18px;
+    //border: double #ddd;
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+    width: 11em;
+    height: 17em;
+    padding-top: 3em;
+    background: white;
+}
+.number{
+    font-size: 5em;
+}
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+}
+.img-back{
+    border: ridge #ddd;
+    border-radius: 18px;
+    width: 11em;
+    height: 17em;
+}
+.cl-lbl{
+    padding-top: 2em
+}
+.cl-img{
+    position: absolute;
+}
+.img-cf{
+    display: inline;
+    font-size: 5em;
+}

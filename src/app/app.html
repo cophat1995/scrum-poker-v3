@@ -1,17 +1,66 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" class="app_header">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>Settings</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content class="app_content">
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <!--<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
-      </button>
+      </button>-->
+
+      <ion-list-header class="list_header">
+        Deck Settings
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label class="item-select label-md">Deck color</ion-label>
+        <ion-select [(ngModel)]="model.background" (ionChange)="changeBackground()">
+          <div *ngFor="let color of deckcolors" >
+          <ion-option value="{{color.value}}">{{color.title}}</ion-option>
+        </div>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label class="item-select label-md">Largest Card</ion-label>
+        <ion-select [(ngModel)]="model.maxCardNumber" (ionChange)="changeLargest()">
+          <div *ngFor="let large of largestCard" >
+          <ion-option value="{{large}}">{{large}}</ion-option>
+        </div>
+        </ion-select> 
+      </ion-item>
+
+      <ion-list-header class="list_header">
+        General Settings
+      </ion-list-header>
+        <ion-item>
+          <ion-label  class="label-md">Auto-Hide Card</ion-label>
+          <ion-toggle [(ngModel)]="autoHide_value" (ionChange)="autoHide()" color="dark"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label  class="label-md">Card Sounds</ion-label>
+          <ion-toggle color="dark"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label  class="label-md">Keep Screen on</ion-label>
+          <ion-toggle [(ngModel)]="keepScreen_value" (ionChange)="keepScreenOn()" color="dark"></ion-toggle>
+        </ion-item>  
+
+      <ion-list-header class="list_header"> 
+        Time Settings
+      </ion-list-header>
+      <ion-item>
+        <ion-label  class="item-select label-md">Duracation</ion-label>
+        <ion-select [(ngModel)]="model.duration" (ionChange)="changeDuration()">
+          <div *ngFor="let time of deckTime">
+          <ion-option value="{{time.value}}" selected="true" >{{time.title}}</ion-option>
+        </div>
+        </ion-select>
+      </ion-item>
     </ion-list>
-  </ion-content>
+  </ion-content> 
 
 </ion-menu>
 
