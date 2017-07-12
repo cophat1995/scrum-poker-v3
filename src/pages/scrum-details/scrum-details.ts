@@ -35,7 +35,6 @@ export class ScrumDetails {
     this
       .nativeAudio
       .preloadSimple('card', 'assets/audio/card.WAV');
-      console.log(typeof(this.navItem) == 'string');
     if(typeof(this.navItem) == 'string') {
       this.typeCard = true;
     } else {
