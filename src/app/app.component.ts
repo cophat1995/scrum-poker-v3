@@ -55,14 +55,15 @@ export class MyApp {
         value: 'lightblue',
         title: 'Light Blue'
       }
-    ]this.largestCard = [
+    ];
+    this.largestCard = [
       5,
       6,
       7,
       8,
       9,
       10
-    ]
+    ];
     this.deckTime = [
       {
         value: '10',
@@ -77,7 +78,7 @@ export class MyApp {
         value: '3',
         title: '3'
       }
-    ]
+    ];
     // load data to the UI
     this.model.background = localStorage.getItem('backgroundColor');
     this.model.maxCardNumber = localStorage.getItem('maxCardNumber');
@@ -93,21 +94,21 @@ export class MyApp {
       this.model.duration = 10;
     
     if (localStorage.getItem('autoHide_value') == 'rotateY(180deg)') {
-      this.autoHide_value = true
+      this.autoHide_value = true;
     } else {
-      this.autoHide_value = false
+      this.autoHide_value = false;
     }
 
     if (localStorage.getItem('sound_value') == 'true') {
-      this.sound_value = true
+      this.sound_value = true;
     } else {
-      this.sound_value = false
+      this.sound_value = false;
     }
 
     if (localStorage.getItem('keepScreen_value') == 'true') {
-      this.keepScreen_value = true
+      this.keepScreen_value = true;
     } else {
-      this.keepScreen_value = false
+      this.keepScreen_value = false;
     }
     this.changeScreen(this.keepScreen_value);
   }
