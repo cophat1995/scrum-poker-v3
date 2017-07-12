@@ -16,10 +16,12 @@
   <div class="scroll-content-child">
     <div id="item" class="flipper" [ngStyle]="{'transform':autoHide_value}" (click)="roTate()">
       <div class="front" [ngStyle]="{'background-color': bgColor}">
-        <div class="cl-img">
-          <img id='img-cf' class="img-cf" src="{{img}}"></div>
-        <div class="cl-lbl">
-          <label class="number">{{selectedItem}}</label></div>
+        <div class="cl-img" [ngClass]="{'none-display': typeCard, 'block-display': !typeCard}">
+          <img id='img-cf' class="img-cf" src="{{img}}" >
+        </div>
+        <div class="cl-lbl" id="img-number" [ngClass]="{'block-display':typeCard, 'none-display': !typeCard}">
+          <label class="number">{{selectedItem}}</label>
+        </div>
       </div>
       <div class="back">
         <img id="card-back" class="img-back" src="assets/image-scrum/back.jpg">
