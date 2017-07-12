@@ -9,11 +9,12 @@
 }
 .scroll-content-child{
     padding-top: 3em;
+    height: 100%;
 }
 /* flip speed goes here */
 .flipper {
-    width: 11em;
-    height: 17em;
+    width: 80%;
+    height: 100%;
     transition: 1s;
     transform-style: preserve-3d;
     position: relative;
@@ -28,6 +29,8 @@
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
 }
 /* front pane, placed above back */
 .front {
@@ -37,13 +40,10 @@
     z-index: 2;
     /* for firefox 31 */
     transform: rotateY(0deg);
-    width: 11em;
-    height: 17em;
-    padding-top: 3em;
     background: white;
 }
 .number{
-    font-size: 5em;
+    font-size: 8em;
 }
 /* back, initially hidden pane */
 .back {
@@ -52,16 +52,18 @@
 .img-back{
     border: ridge #ddd;
     border-radius: 18px;
-    width: 11em;
-    height: 17em;
+    width: 100%;
+    height: 100%;
 }
 .cl-lbl{
-    padding-top: 2em
+    margin-top: 50%;
 }
 .cl-img{
     position: absolute;
+    height: 100%;
 }
 .img-cf{
     display: inline;
-    font-size: 5em;
+    font-size: 7em;
+    height: 100%;
 }
