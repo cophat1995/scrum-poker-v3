@@ -14,26 +14,24 @@
       </ion-row>
     </ion-list>
   </div>
-  <ion-footer class="footer">
-    <ion-segment [(ngModel)]="scrumPoker" color="primary" (ionChange)="changeSegment()">
-      <ion-segment-button value="ppoker">
-        Planning
-      </ion-segment-button>
-      <ion-segment-button value="fibonacci">
-        Fibonacci
-      </ion-segment-button>
-      <ion-segment-button value="tshirt">
-        T-Shirt
-      </ion-segment-button>
-      <ion-segment-button value="natural">
-        Natural
-      </ion-segment-button>
-    </ion-segment>
-  </ion-footer>
 </ion-content>
 <ion-footer>
+  <ion-segment class="ion-segment" [(ngModel)]="scrumPoker" (ionChange)="changeSegment()">
+    <ion-segment-button value="ppoker" [ngStyle]="{'color': bgColor, 'border-color': bgColor }">
+      Planning
+    </ion-segment-button>
+    <ion-segment-button value="fibonacci" [ngStyle]="{'color': bgColor, 'border-color': bgColor}" >
+      Fibonacci
+    </ion-segment-button>
+    <ion-segment-button value="tshirt" [ngStyle]="{'color': bgColor, 'border-color': bgColor}">
+      T-Shirt
+    </ion-segment-button>
+    <ion-segment-button value="natural" [ngStyle]="{'color': bgColor, 'border-color': bgColor}">
+      Natural
+    </ion-segment-button>
+  </ion-segment>
   <ion-navbar>
-    <ion-title>Scrum</ion-title>
+    <img class="imgLogo" src='assets/logo.png'/>
     <ion-buttons end>
       <button ion-button icon-only (click)="timeOver()">
         <ion-icon name="time"></ion-icon>

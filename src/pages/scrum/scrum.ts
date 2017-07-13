@@ -119,7 +119,6 @@ changeSegment() {
     this.arrCard = this.T_SHIRT_SEQUENCE;
   }
 }
-
 itemTapped(event, item) {
   this
     .navCtrl

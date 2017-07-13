@@ -5,7 +5,6 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {Storage} from '@ionic/storage';
 
 import {Scrum} from '../pages/scrum/scrum';
-
 import {Insomnia} from '@ionic-native/insomnia';
 
 @Component({templateUrl: 'app.html'})
@@ -119,7 +118,7 @@ export class MyApp {
     } else {
       // using session
     }
-    location.reload();
+    this.nav.setRoot(this.rootPage);
   }
   changeLargest() {
     var maxCardNumber = this.model.maxCardNumber;
@@ -128,7 +127,8 @@ export class MyApp {
     } else {
       // using session
     }
-    location.reload();
+    this.nav.setRoot(this.rootPage);
+
   }
   changeDuration() {
     var duraTion = this.model.duration;
@@ -137,7 +137,6 @@ export class MyApp {
     } else {
       // using session
     }
-    //location.reload();
   }
   autoHide() {
     if (typeof(Storage) !== "undefined") {
@@ -199,13 +198,5 @@ export class MyApp {
           .splashScreen
           .hide();
       });
-  }
-  openPage(page) {
-    // Reset the content nav to have just this page we wouldn't want the back button
-    // to show in this scenario
-    this
-      .nav
-      .setRoot(page.component);
-
   }
 }

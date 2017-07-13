@@ -2,12 +2,6 @@
   .toolbar-background-md{
     background: #999999
   }
-  .segment-md .segment-button{
-    color: white;
-  }
-  .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated{
-    border-color: white;
-  }
   .scroll-content{
     background: #808080; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#808080, #999999, #595959, #0d0d0d);
@@ -55,7 +49,18 @@
   .labelItem{
     font-size: 2em;
   }
-  .footer{
-    background: dimgrey;
-  }
+}
+.footer{
+  background: dimgrey;
+}
+.ion-segment{
+  background: #0d0d0d;
+
+}
+.segment-md .segment-button.segment-activated{
+  border-color: white;
+}
+.imgLogo{
+  position: initial;
+  width: 4em;
 }
