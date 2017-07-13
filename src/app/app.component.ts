@@ -57,12 +57,12 @@ export class MyApp {
       }
     ];
     this.largestCard = [
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
+      10,
+      20,
+      30,
+      40,
+      50,
+      60
     ];
     this.deckTime = [
       {
@@ -88,7 +88,7 @@ export class MyApp {
       this.model.background = 'white';
     
     if (this.model.maxCardNumber == null) 
-      this.model.maxCardNumber = 10;
+      this.model.maxCardNumber = 60;
     
     if (this.model.duration == null) 
       this.model.duration = 10;
