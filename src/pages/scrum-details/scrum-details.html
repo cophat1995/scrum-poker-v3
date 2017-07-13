@@ -1,23 +1,9 @@
-<ion-header>
-  <ion-navbar>
-    <button menuToggle *ngIf="!selectedItem">
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>My Card</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="timeOver()">
-        <ion-icon name="time"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
 <ion-content class="scrum-detail-scss">
   <div class="scroll-content-child">
     <div id="item" class="flipper" [ngStyle]="{'transform':autoHide_value}" (click)="roTate()">
       <div class="front" [ngStyle]="{'background-color': bgColor}">
         <div class="cl-img" [ngClass]="{'none-display': typeCard, 'block-display': !typeCard}">
-          <img id='img-cf' class="img-cf" src="{{img}}" >
+          <img id='img-cf' class="img-cf" src="{{img}}">
         </div>
         <div class="cl-lbl" id="img-number" [ngClass]="{'block-display':typeCard, 'none-display': !typeCard}">
           <label class="number">{{selectedItem}}</label>
@@ -28,5 +14,15 @@
       </div>
     </div>
   </div>
-
 </ion-content>
+
+<ion-footer>
+  <ion-navbar>
+    <ion-title>My Card</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="timeOver()">
+        <ion-icon name="time"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-footer>

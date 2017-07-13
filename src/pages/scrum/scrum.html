@@ -1,36 +1,4 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle icon-only>
-      <ion-icon name='menu'></ion-icon>
-    </button>
-    <ion-title>Scrum</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="timeOver()">
-        <ion-icon name="time"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
 <ion-content class="grid-basic-page">
-  <ion-header>
-    <ion-toolbar no-border-top>
-      <ion-segment [(ngModel)]="scrumPoker" (ionChange)="changeSegment()">
-        <ion-segment-button value="ppoker">
-          Planning
-        </ion-segment-button>
-        <ion-segment-button value="fibonacci">
-          Fibonacci
-        </ion-segment-button>
-        <ion-segment-button value="tshirt">
-          T-Shirt
-        </ion-segment-button>
-        <ion-segment-button value="natural">
-          Natural
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-  </ion-header>
   <div class="div_view" [ngSwitch]="scrumPoker">
     <ion-list *ngSwitchCase="scrumPoker">
       <ion-row class="row-page">
@@ -46,4 +14,35 @@
       </ion-row>
     </ion-list>
   </div>
+  <ion-footer class="footer">
+    <ion-segment [(ngModel)]="scrumPoker" color="primary" (ionChange)="changeSegment()">
+      <ion-segment-button value="ppoker">
+        Planning
+      </ion-segment-button>
+      <ion-segment-button value="fibonacci">
+        Fibonacci
+      </ion-segment-button>
+      <ion-segment-button value="tshirt">
+        T-Shirt
+      </ion-segment-button>
+      <ion-segment-button value="natural">
+        Natural
+      </ion-segment-button>
+    </ion-segment>
+  </ion-footer>
 </ion-content>
+<ion-footer>
+  <ion-navbar>
+    <ion-title>Scrum</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="timeOver()">
+        <ion-icon name="time"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button menuToggle>
+      <ion-icon name='ios-settings-outline'></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-footer>
