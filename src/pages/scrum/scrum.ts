@@ -1,12 +1,14 @@
-import {Component} from '@angular/core';
-import {Storage} from '@ionic/storage';
-
-import {NavController, NavParams, ModalController} from 'ionic-angular';
-import {ScrumDetails} from '../scrum-details/scrum-details';
-import {TimeDetails} from '../time/time';
+import { Component, ViewChild } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { NavController, NavParams, ModalController, MenuController,Nav } from 'ionic-angular';
+import { ScrumDetails } from '../scrum-details/scrum-details';
+import { TimeDetails } from '../time/time';
+import {MyApp} from '../../app/app.component';
 
 @Component({selector: 'scrum', templateUrl: 'scrum.html'})
 export class Scrum {
+  @ViewChild(Nav)nav : Nav;
+  menuPage:any = MyApp;
   IMG_SEQUENCE = ['assets/coffee.png']
   SPECIAL_SEQUENCE = ['$'];
   PLANING_POCKER_SEQUENCE = [
@@ -56,6 +58,7 @@ export class Scrum {
     11,
     12
   ];
+  
   arrCard = [];
   bgColor = 'white';
   selectedItem : any;
@@ -67,7 +70,7 @@ export class Scrum {
   fontSizeNumber = 2;
   isFewCards: boolean = true;
 
-  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController) {
+  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController, public menuCtrl: MenuController) {
     this.loadData();
   }
   loadData() {
@@ -97,7 +100,6 @@ export class Scrum {
   }
   this.bgColor = backgroundColor;
   this.loadCardNumber(curSequenceArray);
-  this.caculateSizeCard(this.arrCard.length + 1);
 }
 loadCardNumber(a) {
   if(a != this.T_SHIRT_SEQUENCE){
@@ -127,6 +129,7 @@ loadCardNumber(a) {
           break;
       }
     } 
+    this.caculateSizeCard(this.arrCard.length + 1);
   }
 
 caculateSizeCard(numOfCards) {
@@ -162,8 +165,8 @@ changeSegment() {
   } else {
     // using session
   }
-  console.log(curSequenceArray);
   this.caculateSizeCard(this.arrCard.length + 1);
+  console.log(localStorage.getItem('sequenceType'));
 }
 itemTapped(event, item) {
   this
@@ -174,5 +177,9 @@ timeOver() {
   this
     .navCtrl
     .push(TimeDetails);
+}
+openMenu(){
+  this.menuCtrl.open();
+  this.navCtrl.setRoot(this.menuPage);
 }
 }

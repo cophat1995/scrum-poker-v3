@@ -12,6 +12,7 @@ import {TimeDetails} from '../pages/time/time';
 
 import {Insomnia} from '@ionic-native/insomnia';
 import {NativeAudio} from '@ionic-native/native-audio';
+import { DataMenuPage } from './datamenu';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {NativeAudio} from '@ionic-native/native-audio';
     MyApp, Scrum, ScrumDetails, TimeDetails
   ],
   providers: [
+    DataMenuPage,
     Insomnia,
     NativeAudio,
     StatusBar,

@@ -3,114 +3,58 @@ import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Storage} from '@ionic/storage';
-
-import {Scrum} from '../pages/scrum/scrum';
 import {Insomnia} from '@ionic-native/insomnia';
+import {Scrum} from '../pages/scrum/scrum';
+import { DataMenuPage } from './datamenu';
 
 @Component({templateUrl: 'app.html'})
 export class MyApp {
   @ViewChild(Nav)nav : Nav;
   rootPage : any = Scrum;
+  mainPage : any = Scrum;
   pages : Array < {
     title: string,
     component: any
   } >;
-  mainPage : any = Scrum;
 
   deckcolors = [];
-  largestCard = [];
-  largest_PlaningPoker=[];
-  largest_Fibonacci=[];
-  largest_Natural=[];
-  sequenceType;
   deckTime = [];
   model : any = {};
   autoHide_value : boolean;
   keepScreen_value : boolean;
   sound_value : boolean;
 
-  constructor(storage : Storage, public platform : Platform, public statusBar : StatusBar, public splashScreen : SplashScreen, private insomnia : Insomnia) {
+  largestCard = [];
+  largest_PlaningPoker=[];
+  largest_Fibonacci=[];
+  largest_Natural=[];
+  sequenceType;
+
+  constructor(public data: DataMenuPage, storage : Storage, public platform : Platform, public statusBar : StatusBar, public splashScreen : SplashScreen, private insomnia : Insomnia) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.loadData();
   }
   loadData() {
-    this.deckcolors = [
-      {
-        value: 'white',
-        title: 'White'
-      }, {
-        value: 'gainsboro',
-        title: 'Gainsboro'
-      }, {
-        value: 'cyan',
-        title: 'Cyan'
-      }, {
-        value: 'pink',
-        title: 'Pink'
-      }, {
-        value: 'lightgreen',
-        title: 'Light Green'
-      }, {
-        value: 'lightyellow',
-        title: 'Light Yellow'
-      }, {
-        value: 'lightblue',
-        title: 'Light Blue'
-      }
-    ];
-    this.largest_PlaningPoker=[5,8,10];
-    this.largest_Fibonacci = [5,8];
-    this.largest_Natural = [7,8,9];
-    this.largestCard = this.largest_PlaningPoker;
-    this.deckTime = [
-      {
-        value: '10',
-        title: '10'
-      }, {
-        value: '7',
-        title: '7'
-      }, {
-        value: '5',
-        title: '5'
-      }, {
-        value: '3',
-        title: '3'
-      }
-    ];
+    this.deckcolors = this.data.deckcolors;
+    this.deckTime = this.data.deckTime;
     // load data to the UI
-    this.sequenceType = localStorage.getItem('select_Sequence');
-    this.model.background = localStorage.getItem('backgroundColor');
-    this.model.maxCardNumber = localStorage.getItem('maxCardNumber');
-    this.model.duration = localStorage.getItem('duraTion');
-
-    if (this.model.background == null) 
-      this.model.background = 'white';
-    
-    if (this.model.maxCardNumber == null) 
-      this.model.maxCardNumber = 60;
-    
-    if (this.model.duration == null) 
-      this.model.duration = 10;
-    
-    if (localStorage.getItem('autoHide_value') == 'rotateY(180deg)') {
-      this.autoHide_value = true;
-    } else {
-      this.autoHide_value = false;
-    }
-
-    if (localStorage.getItem('sound_value') == 'true') {
-      this.sound_value = true;
-    } else {
-      this.sound_value = false;
-    }
-
-    if (localStorage.getItem('keepScreen_value') == 'true') {
-      this.keepScreen_value = true;
-    } else {
-      this.keepScreen_value = false;
-    }
-    this.changeScreen(this.keepScreen_value);
+    this.getSequenceType();
+    this.getBackground();
+    this.getDuration();
+    this.getAuto_hide();
+    this.getScreenOn();
+    this.getSoundOn();
+  }
+  getSequenceType(){
+    this.sequenceType = localStorage.getItem('sequenceType');
+    if(this.sequenceType == null || this.sequenceType == 'ppoker')
+      this.largestCard = this.data.largest_PlaningPoker;
+    else if( this.sequenceType == 'fibonacci')
+      this.largestCard = this.data.largest_Fibonacci;
+    else if( this.sequenceType == 'natural')
+      this.largestCard = this.data.largest_Natural;
+    console.log(this.sequenceType + ' of menu')
   }
   changeBackground() {
     var backgroundColor = this.model.background;
@@ -121,7 +65,13 @@ export class MyApp {
     }
     this.nav.setRoot(this.rootPage);
   }
+  getBackground(){
+    this.model.background = localStorage.getItem('backgroundColor');
+    if (this.model.background == null) 
+      this.model.background = 'white';
+  }
   changeLargest() {
+    this.getSequenceType();
     var maxCardNumber = this.model.maxCardNumber;
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem('maxCardNumber', maxCardNumber);
@@ -129,7 +79,6 @@ export class MyApp {
       // using session
     }
     this.nav.setRoot(this.rootPage);
-
   }
   changeDuration() {
     var duraTion = this.model.duration;
@@ -138,6 +87,11 @@ export class MyApp {
     } else {
       // using session
     }
+  }
+  getDuration(){
+    this.model.duration = localStorage.getItem('duraTion');
+    if (this.model.duration == null) 
+      this.model.duration = 10;
   }
   autoHide() {
     if (typeof(Storage) !== "undefined") {
@@ -148,6 +102,13 @@ export class MyApp {
       }
     else {
       // using session
+    }
+  }
+  getAuto_hide(){
+    if (localStorage.getItem('autoHide_value') == 'rotateY(180deg)') {
+      this.autoHide_value = true;
+    } else {
+      this.autoHide_value = false;
     }
   }
   keepScreenOn() {
@@ -173,6 +134,14 @@ export class MyApp {
         .allowSleepAgain();
     }
   }
+  getScreenOn(){
+    if (localStorage.getItem('keepScreen_value') == 'true') {
+      this.keepScreen_value = true;
+    } else {
+      this.keepScreen_value = false;
+    }
+    this.changeScreen(this.keepScreen_value);
+  }
   soundOn() {
     if (typeof(Storage) !== "undefined") {
       if (this.sound_value == true) {
@@ -184,7 +153,13 @@ export class MyApp {
       // using session
     }
   }
-
+  getSoundOn(){
+    if (localStorage.getItem('sound_value') == 'true') {
+      this.sound_value = true;
+    } else {
+      this.sound_value = false;
+    }
+  }
   initializeApp() {
     this
       .platform
