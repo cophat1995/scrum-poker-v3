@@ -1,14 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import { NavController, NavParams, ModalController, MenuController,Nav } from 'ionic-angular';
-import { ScrumDetails } from '../scrum-details/scrum-details';
-import { TimeDetails } from '../time/time';
+import {Component, ViewChild} from '@angular/core';
+import {Storage} from '@ionic/storage';
+import {NavController, NavParams, ModalController, MenuController, Nav} from 'ionic-angular';
+import {ScrumDetails} from '../scrum-details/scrum-details';
+import {TimeDetails} from '../time/time';
 import {MyApp} from '../../app/app.component';
 
 @Component({selector: 'scrum', templateUrl: 'scrum.html'})
 export class Scrum {
   @ViewChild(Nav)nav : Nav;
-  menuPage:any = MyApp;
+  menuPage : any = MyApp;
+
   IMG_SEQUENCE = ['assets/coffee.png']
   SPECIAL_SEQUENCE = ['$'];
   PLANING_POCKER_SEQUENCE = [
@@ -58,7 +59,7 @@ export class Scrum {
     11,
     12
   ];
-  
+
   arrCard = [];
   bgColor = 'white';
   selectedItem : any;
@@ -68,9 +69,9 @@ export class Scrum {
   cardHeight;
   paddingTopLabel;
   fontSizeNumber = 2;
-  isFewCards: boolean = true;
+  isFewCards : boolean = true;
 
-  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController, public menuCtrl: MenuController) {
+  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController, public menuCtrl : MenuController) {
     this.loadData();
   }
   loadData() {
@@ -102,48 +103,52 @@ export class Scrum {
   this.loadCardNumber(curSequenceArray);
 }
 loadCardNumber(a) {
-  if(a != this.T_SHIRT_SEQUENCE){
-  for (var i = 0; i < a.length; i++) {
-    if (a[i] <= this.maxCardNumber) {
-      if (a[i] == 0.5) {
-        this.arrCard[i] = "1/2";
-      } else {
-        this.arrCard[i] = "" + a[i];
+  if (a != this.T_SHIRT_SEQUENCE) {
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] <= this.maxCardNumber) {
+        if (a[i] == 0.5) {
+          this.arrCard[i] = "1/2";
+        } else {
+          this.arrCard[i] = "" + a[i];
+        }
       }
     }
-  }
-  }
-  else{
+  } else {
     this.arrCard = this.T_SHIRT_SEQUENCE;
   }
   this.add_SpecialCard();
 }
-  add_SpecialCard(){
-    var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
-    for (var j = this.arrCard.length; j < maxCard; j++){
-      for(var z = 0; z < this.SPECIAL_SEQUENCE.length;z++){
-        if(this.arrCard[j -1 ] != this.SPECIAL_SEQUENCE[z]){
-          this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
-        }
-        else
-          break;
+add_SpecialCard() {
+  var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
+  for (var j = this.arrCard.length; j < maxCard; j++) {
+    for (var z = 0; z < this.SPECIAL_SEQUENCE.length; z++) {
+      if (this.arrCard[j - 1] != this.SPECIAL_SEQUENCE[z]) {
+        this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
+      } else 
+        break;
       }
-    } 
-    this.caculateSizeCard(this.arrCard.length + 1);
-  }
+    }
+  this.caculateSizeCard(this.arrCard.length + 1);
+}
 
 caculateSizeCard(numOfCards) {
   var cardFrame = {
     width: window.innerWidth,
     height: window.innerHeight
   };
-  this.fontSizeNumber = (numOfCards <= 9) ? 2.5:2; //bigger if 3 cards/row
-  cardFrame.width = (numOfCards <= 9) ? ((cardFrame.width-30)/3) : ((cardFrame.width-10*5)/4);
-  cardFrame.height = (cardFrame.width*8)/5; //card ratio 5:8
-  this.cardWidth = cardFrame.width*0.9;
-  this.cardHeight = cardFrame.height*0.9; 
-  this.paddingTopLabel = (this.cardHeight - this.fontSizeNumber*16)/2;
-  this.isFewCards = (numOfCards <= 9) ? true:false;
+  this.fontSizeNumber = (numOfCards <= 9)
+    ? 2.5
+    : 2; //bigger if 3 cards/row
+  cardFrame.width = (numOfCards <= 9)
+    ? ((cardFrame.width - 30) / 3)
+    : ((cardFrame.width - 10 * 5) / 4);
+  cardFrame.height = (cardFrame.width * 8) / 5; //card ratio 5:8
+  this.cardWidth = cardFrame.width * 0.9;
+  this.cardHeight = cardFrame.height * 0.9;
+  this.paddingTopLabel = (this.cardHeight - this.fontSizeNumber * 16) / 2;
+  this.isFewCards = (numOfCards <= 9)
+    ? true
+    : false;
 }
 
 changeSegment() {
@@ -162,11 +167,12 @@ changeSegment() {
   this.loadCardNumber(curSequenceArray);
   if (typeof(Storage) !== "undefined") {
     localStorage.setItem('sequenceType', this.scrumPoker);
+    console.log("111: " + this.scrumPoker);  
+    console.log("112: " + localStorage.getItem('sequenceType'));  
   } else {
     // using session
   }
   this.caculateSizeCard(this.arrCard.length + 1);
-  console.log(localStorage.getItem('sequenceType'));
 }
 itemTapped(event, item) {
   this
@@ -178,8 +184,12 @@ timeOver() {
     .navCtrl
     .push(TimeDetails);
 }
-openMenu(){
-  this.menuCtrl.open();
-  this.navCtrl.setRoot(this.menuPage);
+openMenu() {
+  this
+    .menuCtrl
+    .open();
+  this
+    .navCtrl
+    .setRoot(this.menuPage);
 }
 }

@@ -1,13 +1,14 @@
-import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import {Component, ViewChild } from '@angular/core';
+import {Nav, Platform } from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Storage} from '@ionic/storage';
 import {Insomnia} from '@ionic-native/insomnia';
 import {Scrum} from '../pages/scrum/scrum';
-import { DataMenuPage } from './datamenu';
+import {DataMenuPage} from './datamenu';
 
 @Component({templateUrl: 'app.html'})
+
 export class MyApp {
   @ViewChild(Nav)nav : Nav;
   rootPage : any = Scrum;
@@ -25,15 +26,15 @@ export class MyApp {
   sound_value : boolean;
 
   largestCard = [];
-  largest_PlaningPoker=[];
-  largest_Fibonacci=[];
-  largest_Natural=[];
+  largest_PlaningPoker = [];
+  largest_Fibonacci = [];
+  largest_Natural = [];
   sequenceType;
-
-  constructor(public data: DataMenuPage, storage : Storage, public platform : Platform, public statusBar : StatusBar, public splashScreen : SplashScreen, private insomnia : Insomnia) {
+  constructor(public data : DataMenuPage, storage : Storage, public platform : Platform, 
+              public statusBar : StatusBar, public splashScreen : SplashScreen, 
+              private insomnia : Insomnia,
+              ) {
     this.initializeApp();
-    // used for an example of ngFor and navigation
-    this.loadData();
   }
   loadData() {
     this.deckcolors = this.data.deckcolors;
@@ -46,15 +47,17 @@ export class MyApp {
     this.getScreenOn();
     this.getSoundOn();
   }
-  getSequenceType(){
+  getSequenceType() {
     this.sequenceType = localStorage.getItem('sequenceType');
-    if(this.sequenceType == null || this.sequenceType == 'ppoker')
+    if (this.sequenceType == null || this.sequenceType == 'ppoker') {
       this.largestCard = this.data.largest_PlaningPoker;
-    else if( this.sequenceType == 'fibonacci')
+    } else if (this.sequenceType == 'fibonacci') {
       this.largestCard = this.data.largest_Fibonacci;
-    else if( this.sequenceType == 'natural')
+    } else if (this.sequenceType == 'natural') {
       this.largestCard = this.data.largest_Natural;
-    console.log(this.sequenceType + ' of menu')
+    }
+    console.log(this.sequenceType + ' of menu');
+    console.log("largestCard: " + this.largestCard);
   }
   changeBackground() {
     var backgroundColor = this.model.background;
@@ -63,21 +66,20 @@ export class MyApp {
     } else {
       // using session
     }
-    this.nav.setRoot(this.rootPage);
+    this
+      .nav
+      .setRoot(this.rootPage);
   }
-  getBackground(){
+  getBackground() {
     this.model.background = localStorage.getItem('backgroundColor');
     if (this.model.background == null) 
       this.model.background = 'white';
-  }
+    }
   changeLargest() {
-    this.getSequenceType();
     var maxCardNumber = this.model.maxCardNumber;
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem('maxCardNumber', maxCardNumber);
-    } else {
-      // using session
-    }
+    } 
     this.nav.setRoot(this.rootPage);
   }
   changeDuration() {
@@ -88,11 +90,11 @@ export class MyApp {
       // using session
     }
   }
-  getDuration(){
+  getDuration() {
     this.model.duration = localStorage.getItem('duraTion');
     if (this.model.duration == null) 
       this.model.duration = 10;
-  }
+    }
   autoHide() {
     if (typeof(Storage) !== "undefined") {
       if (this.autoHide_value == true) 
@@ -104,7 +106,7 @@ export class MyApp {
       // using session
     }
   }
-  getAuto_hide(){
+  getAuto_hide() {
     if (localStorage.getItem('autoHide_value') == 'rotateY(180deg)') {
       this.autoHide_value = true;
     } else {
@@ -134,7 +136,7 @@ export class MyApp {
         .allowSleepAgain();
     }
   }
-  getScreenOn(){
+  getScreenOn() {
     if (localStorage.getItem('keepScreen_value') == 'true') {
       this.keepScreen_value = true;
     } else {
@@ -153,7 +155,7 @@ export class MyApp {
       // using session
     }
   }
-  getSoundOn(){
+  getSoundOn() {
     if (localStorage.getItem('sound_value') == 'true') {
       this.sound_value = true;
     } else {
