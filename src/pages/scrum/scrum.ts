@@ -142,7 +142,6 @@ changeSegment() {
   }
   this.caculateSizeCard(this.arrCard.length + 1);
 }
-
 itemTapped(event, item) {
   this
     .navCtrl

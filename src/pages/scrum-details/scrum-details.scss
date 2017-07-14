@@ -1,5 +1,5 @@
 .scrum-detail-scss{
-    .scroll-content{
+  .scroll-content{
     background: #808080; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#808080, #999999, #595959, #0d0d0d);
     background: -moz-linear-gradient(#808080, #999999, #595959, #0d0d0d);
@@ -9,6 +9,9 @@
 }
 .scroll-content-child{
     height: 100%;
+}
+.toolbar-title-md{
+    text-align: left;
 }
 /* flip speed goes here */
 .flipper {
