@@ -13,6 +13,7 @@ export class ScrumDetails {
   autoHide_value;
   sound_value;
   typeCard;
+  contentChild = {width: 0, height: 0, marginLeft: 0, marginTop: 0};
 
   constructor(public navCtrl : NavController, public navParams : NavParams, private nativeAudio : NativeAudio) {
     var backgroundColor; // default is #fffff;\
@@ -30,8 +31,16 @@ export class ScrumDetails {
     this.bgColor = backgroundColor;
     if (this.autoHide_value == null) 
       this.currentDeg = 'rotateY(0)';
-    else 
-      this.currentDeg = this.autoHide_value;
+    else {
+      this.currentDeg = 'rotateY(0)';
+      var _this = this;
+      var autoFold = setInterval(function (data) {
+        _this.roTate();
+        if(_this.currentDeg == _this.autoHide_value) {
+          clearInterval(autoFold);
+        }
+      }, 100);
+    }
     this
       .nativeAudio
       .preloadSimple('card', 'assets/audio/card.WAV');
@@ -39,6 +48,24 @@ export class ScrumDetails {
       this.typeCard = true;
     } else {
       this.typeCard = false;
+    }
+    this.changeSize();
+  }
+  changeSize() {
+    var ratioScreen = Math.round((window.innerHeight/window.innerWidth)*100)/100;
+    if(ratioScreen > 1.45) { //1.4 is standard card
+      this.contentChild.width = window.innerWidth;
+      this.contentChild.height = window.innerWidth*1.4;
+      this.contentChild.marginTop = (window.innerHeight - 56 - this.contentChild.height)/2; // translate to center of page (vertically)
+    }
+    else if(ratioScreen < 1.45) {
+      this.contentChild.height = window.innerHeight - 56; //56 is Nav bar Size
+      this.contentChild.width = window.innerHeight/1.4;
+      this.contentChild.marginLeft = (window.innerWidth - this.contentChild.width)/2; // translate to center of page (horizontally)
+    }
+    else {
+      this.contentChild.width = window.innerWidth;
+      this.contentChild.height = window.innerHeight;
     }
   }
   roTate() {
