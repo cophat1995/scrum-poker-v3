@@ -19,6 +19,10 @@ export class MyApp {
 
   deckcolors = [];
   largestCard = [];
+  largest_PlaningPoker=[];
+  largest_Fibonacci=[];
+  largest_Natural=[];
+  sequenceType;
   deckTime = [];
   model : any = {};
   autoHide_value : boolean;
@@ -55,14 +59,10 @@ export class MyApp {
         title: 'Light Blue'
       }
     ];
-    this.largestCard = [
-      10,
-      20,
-      30,
-      40,
-      50,
-      60
-    ];
+    this.largest_PlaningPoker=[5,8,10];
+    this.largest_Fibonacci = [5,8];
+    this.largest_Natural = [7,8,9];
+    this.largestCard = this.largest_PlaningPoker;
     this.deckTime = [
       {
         value: '10',
@@ -79,6 +79,7 @@ export class MyApp {
       }
     ];
     // load data to the UI
+    this.sequenceType = localStorage.getItem('select_Sequence');
     this.model.background = localStorage.getItem('backgroundColor');
     this.model.maxCardNumber = localStorage.getItem('maxCardNumber');
     this.model.duration = localStorage.getItem('duraTion');

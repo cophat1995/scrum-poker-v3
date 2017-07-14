@@ -54,39 +54,47 @@ export class Scrum {
     9,
     10,
     11,
-    12,
-    13,
-    14,
-    15,
-    16
+    12
   ];
   arrCard = [];
   bgColor = 'white';
   selectedItem : any;
-  scrumPoker : string = "ppoker"
+  scrumPoker;
   maxCardNumber;
 
   constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController) {
     this.loadData();
-    var curSequenceArray = this.PLANING_POCKER_SEQUENCE; //default = Planning Poker
-    this.loadCardNumber(curSequenceArray);
   }
   loadData() {
+    var curSequenceArray = [];
     var sequenceType; // fibonaci, planing-pocker, natural, t-shirt
     var backgroundColor; // default is #fffff;\
     if (typeof(Storage) !== "undefined") {
+    sequenceType = localStorage.getItem('sequenceType');
     backgroundColor = localStorage.getItem('backgroundColor');
-    this.maxCardNumber = parseInt(localStorage.getItem('maxCardNumber')) || 200;
+    this.maxCardNumber = parseInt(localStorage.getItem('maxCardNumber')) || 100;
   }
-  if (sequenceType == null) {
-    sequenceType = "fibonaci"; // fibonaci, planing-pocker, natural, t-shirt
+  if (sequenceType == null || sequenceType == 'ppoker') {
+    curSequenceArray = this.PLANING_POCKER_SEQUENCE;
+    this.scrumPoker = 'ppoker';
+  } else if (sequenceType == 'fibonacci') {
+    curSequenceArray = this.FIBONACI_SEQUENCE;
+    this.scrumPoker = 'fibonacci';
+  } else if (sequenceType == 'tshirt') {
+    curSequenceArray = this.T_SHIRT_SEQUENCE;
+    this.scrumPoker = 'tshirt';
+  } else {
+    curSequenceArray = this.NATURAL_SEQUENCE;
+    this.scrumPoker = 'natural';
   }
   if (backgroundColor == null) {
     backgroundColor = "white"; // white, gray, cyan
   }
   this.bgColor = backgroundColor;
+  this.loadCardNumber(curSequenceArray);
 }
 loadCardNumber(a) {
+  if(a != this.T_SHIRT_SEQUENCE){
   for (var i = 0; i < a.length; i++) {
     if (a[i] <= this.maxCardNumber) {
       if (a[i] == 0.5) {
@@ -96,9 +104,16 @@ loadCardNumber(a) {
       }
     }
   }
-  var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
-  for (var j = this.arrCard.length; j < maxCard; j++) 
-    this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
+  }
+  else{
+    this.arrCard = this.T_SHIRT_SEQUENCE;
+  }
+  this.add_SpecialCard();
+}
+  add_SpecialCard(){
+    var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
+    for (var j = this.arrCard.length; j < maxCard; j++) 
+      this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
   }
 changeSegment() {
   var curSequenceArray = [];
@@ -113,11 +128,13 @@ changeSegment() {
   } else if (this.scrumPoker == "tshirt") {
     curSequenceArray = this.T_SHIRT_SEQUENCE;
   }
-  if (this.scrumPoker != "tshirt") {
-    this.loadCardNumber(curSequenceArray);
+  this.loadCardNumber(curSequenceArray);
+  if (typeof(Storage) !== "undefined") {
+    localStorage.setItem('sequenceType', this.scrumPoker);
   } else {
-    this.arrCard = this.T_SHIRT_SEQUENCE;
+    // using session
   }
+  console.log(curSequenceArray)
 }
 itemTapped(event, item) {
   this
