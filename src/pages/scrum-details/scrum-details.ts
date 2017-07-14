@@ -31,8 +31,16 @@ export class ScrumDetails {
     this.bgColor = backgroundColor;
     if (this.autoHide_value == null) 
       this.currentDeg = 'rotateY(0)';
-    else 
-      this.currentDeg = this.autoHide_value;
+    else {
+      this.currentDeg = 'rotateY(0)';
+      var _this = this;
+      var autoFold = setInterval(function (data) {
+        _this.roTate();
+        if(_this.currentDeg == _this.autoHide_value) {
+          clearInterval(autoFold);
+        }
+      }, 100);
+    }
     this
       .nativeAudio
       .preloadSimple('card', 'assets/audio/card.WAV');

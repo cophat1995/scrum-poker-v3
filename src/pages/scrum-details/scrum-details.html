@@ -1,6 +1,6 @@
 <ion-content class="scrum-detail-scss">
   <div class="scroll-content-child" [ngStyle]="{'width.px': contentChild.width, 'height.px': contentChild.height, 'margin-top.px': contentChild.marginTop, 'margin-left.px': contentChild.marginLeft}">
-    <div id="item" class="flipper" [ngStyle]="{'transform':autoHide_value}" (click)="roTate()">
+    <div id="item" class="flipper" (click)="roTate()">
       <div class="front" [ngStyle]="{'background-color': bgColor}">
         <div class="cl-img" [ngClass]="{'none-display': typeCard, 'block-display': !typeCard}">
           <img id='img-cf' class="img-cf" src="{{img}}">
