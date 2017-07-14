@@ -20,13 +20,13 @@
   }
   .row-page{
     text-align: center;
-    justify-content: space-around;
+    
     //margin: 1em;
   }
   .letArrCard{
     text-align: center;
-    padding: 0.2em;
-    margin: 0.1em;
+    // padding: 0.2em;
+    // margin: 0.1em;
   }
   .col-page {
     border-radius: 2px;
@@ -34,7 +34,7 @@
   }
   .divItem {
     //background-color: #F9FAFB ;
-    padding-top: 45%;
+    // padding-top: 45%;
     border: ridge #ddd;
     border-radius: 10px;
     text-align: center;
@@ -43,16 +43,26 @@
     font-size: 2em;
   }
   .imgItem{
-    margin: 0.1em;
-    margin-top: 1.45em;
     border: ridge #ddd;
     //border: double #ddd;
     border-radius: 10px;
     text-align: center;
-    width: 90px;
-    height: 120px
+    // width: 90px;
+    // height: 120px
   }
   .labelItem{
     font-size: 2em;
+  }
+  .fewCards {
+    padding: 10px 10px;
+  }
+  .manyCards {
+    padding: 5px 10px;
+  }
+  .imgFewCards {
+    margin: 10px 10px;
+  }
+  .imgManyCards {
+    margin: 5px 10px;
   }
 }

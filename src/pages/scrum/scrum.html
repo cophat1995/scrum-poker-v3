@@ -33,16 +33,16 @@
   </ion-header>
   <div class="div_view" [ngSwitch]="scrumPoker">
     <ion-list *ngSwitchCase="scrumPoker">
-      <ion-row class="row-page">
-        <div class="letArrCard" *ngFor="let item of arrCard">
-          <ion-col class="col-page">
-            <div id="idItem" class="divItem" [ngStyle]="{'background-color': bgColor}" (click)="itemTapped($event, item)">
+      <ion-row class="row-page" style="margin-top:20px">
+        <div class="letArrCard" *ngFor="let item of arrCard" [ngClass]="{'fewCards': isFewCards, 'manyCards': !isFewCards}">
+          <ion-col class="col-page" style="padding:0px">
+            <div id="idItem" class="divItem" [ngStyle]="{'background-color': bgColor, 'width.px':cardWidth, 'height.px': cardHeight, 'fontSize.em': fontSizeNumber, 'padding-top.px': paddingTopLabel }" (click)="itemTapped($event, item)">
               <!--<label id="idLabel" class="labelItem">{{item}}</label>-->
               {{item}}
             </div>
           </ion-col>
         </div>
-        <img id="idImg" [ngStyle]="{'background-color': bgColor}" class="imgItem" src="{{IMG_SEQUENCE}}" (click)="itemTapped($event, IMG_SEQUENCE)">
+        <img id="idImg" [ngStyle]="{'background-color': bgColor, 'width.px':cardWidth, 'height.px': cardHeight}" [ngClass]="{'imgFewCards': isFewCards, 'imgManyCards': !isFewCards}" class="imgItem" src="{{IMG_SEQUENCE}}" (click)="itemTapped($event, IMG_SEQUENCE)">
       </ion-row>
     </ion-list>
   </div>

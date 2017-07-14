@@ -65,11 +65,17 @@ export class Scrum {
   selectedItem : any;
   scrumPoker : string = "ppoker"
   maxCardNumber;
+  cardWidth;
+  cardHeight;
+  paddingTopLabel;
+  fontSizeNumber = 2;
+  isFewCards: boolean = true;
 
   constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController) {
     this.loadData();
     var curSequenceArray = this.PLANING_POCKER_SEQUENCE; //default = Planning Poker
     this.loadCardNumber(curSequenceArray);
+    this.caculateSizeCard(this.arrCard.length + 1); // number of cards = length of arrCard + 1
   }
   loadData() {
     var sequenceType; // fibonaci, planing-pocker, natural, t-shirt
@@ -100,6 +106,22 @@ loadCardNumber(a) {
   for (var j = this.arrCard.length; j < maxCard; j++) 
     this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
   }
+
+caculateSizeCard(numOfCards) {
+  console.log("num of cards", numOfCards);
+  var cardFrame = {
+    width: window.innerWidth,
+    height: window.innerHeight
+  };
+  this.fontSizeNumber = (numOfCards <= 9) ? 2.5:2; //bigger if 3 cards/row
+  cardFrame.width = (numOfCards <= 9) ? ((cardFrame.width-30)/3) : ((cardFrame.width-10*5)/4);
+  cardFrame.height = (cardFrame.width*8)/5; //card ratio 5:8
+  this.cardWidth = cardFrame.width*0.9;
+  this.cardHeight = cardFrame.height*0.9; 
+  this.paddingTopLabel = (this.cardHeight - this.fontSizeNumber*16)/2;
+  this.isFewCards = (numOfCards <= 9) ? true:false;
+}
+
 changeSegment() {
   var curSequenceArray = [];
   this.arrCard = [];
@@ -118,6 +140,7 @@ changeSegment() {
   } else {
     this.arrCard = this.T_SHIRT_SEQUENCE;
   }
+  this.caculateSizeCard(this.arrCard.length + 1);
 }
 
 itemTapped(event, item) {
