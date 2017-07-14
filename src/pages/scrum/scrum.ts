@@ -97,7 +97,7 @@ export class Scrum {
   }
   this.bgColor = backgroundColor;
   this.loadCardNumber(curSequenceArray);
-  this.caculateSizeCard(curSequenceArray);
+  this.caculateSizeCard(this.arrCard.length + 1);
 }
 loadCardNumber(a) {
   if(a != this.T_SHIRT_SEQUENCE){
@@ -162,7 +162,8 @@ changeSegment() {
   } else {
     // using session
   }
-  console.log(curSequenceArray)
+  console.log(curSequenceArray);
+  this.caculateSizeCard(this.arrCard.length + 1);
 }
 itemTapped(event, item) {
   this
