@@ -69,7 +69,6 @@ export class Scrum {
 
   constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController) {
     this.loadData();
-
   }
   loadData() {
     var curSequenceArray = [];
@@ -119,12 +118,18 @@ loadCardNumber(a) {
 }
   add_SpecialCard(){
     var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
-    for (var j = this.arrCard.length; j < maxCard; j++) 
-      this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
+    for (var j = this.arrCard.length; j < maxCard; j++){
+      for(var z = 0; z < this.SPECIAL_SEQUENCE.length;z++){
+        if(this.arrCard[j -1 ] != this.SPECIAL_SEQUENCE[z]){
+          this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
+        }
+        else
+          break;
+      }
+    } 
   }
 
 caculateSizeCard(numOfCards) {
-  console.log("num of cards", numOfCards);
   var cardFrame = {
     width: window.innerWidth,
     height: window.innerHeight
