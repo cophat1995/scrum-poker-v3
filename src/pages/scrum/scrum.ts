@@ -69,12 +69,7 @@ export class Scrum {
 
   constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController) {
     this.loadData();
-<<<<<<< HEAD
-=======
-    var curSequenceArray = this.PLANING_POCKER_SEQUENCE; //default = Planning Poker
-    this.loadCardNumber(curSequenceArray);
-    this.caculateSizeCard(this.arrCard.length + 1); // number of cards = length of arrCard + 1
->>>>>>> fa164d9933a79f28cdc8b060087aabd245578393
+
   }
   loadData() {
     var curSequenceArray = [];
@@ -103,6 +98,7 @@ export class Scrum {
   }
   this.bgColor = backgroundColor;
   this.loadCardNumber(curSequenceArray);
+  this.caculateSizeCard(curSequenceArray);
 }
 loadCardNumber(a) {
   if(a != this.T_SHIRT_SEQUENCE){
@@ -161,11 +157,7 @@ changeSegment() {
   } else {
     // using session
   }
-<<<<<<< HEAD
   console.log(curSequenceArray)
-=======
-  this.caculateSizeCard(this.arrCard.length + 1);
->>>>>>> fa164d9933a79f28cdc8b060087aabd245578393
 }
 itemTapped(event, item) {
   this
