@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {Storage} from '@ionic/storage';
-import {NavController, NavParams, ModalController, MenuController, Nav} from 'ionic-angular';
+import {NavController, NavParams, ModalController, MenuController, Nav, Events} from 'ionic-angular';
 import {ScrumDetails} from '../scrum-details/scrum-details';
 import {TimeDetails} from '../time/time';
 import {MyApp} from '../../app/app.component';
@@ -71,7 +71,7 @@ export class Scrum {
   fontSizeNumber = 2;
   isFewCards : boolean = true;
 
-  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController, public menuCtrl : MenuController) {
+  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController, public menuCtrl : MenuController, public events: Events) {
     this.loadData();
   }
   loadData() {
@@ -101,6 +101,28 @@ export class Scrum {
   }
   this.bgColor = backgroundColor;
   this.loadCardNumber(curSequenceArray);
+}
+changeSegment() {
+  var curSequenceArray = [];
+  this.arrCard = [];
+
+  if (this.scrumPoker == "fibonacci") {
+    curSequenceArray = this.FIBONACI_SEQUENCE;
+  } else if (this.scrumPoker == "ppoker") {
+    curSequenceArray = this.PLANING_POCKER_SEQUENCE;
+  } else if (this.scrumPoker == "natural") {
+    curSequenceArray = this.NATURAL_SEQUENCE;
+  } else if (this.scrumPoker == "tshirt") {
+    curSequenceArray = this.T_SHIRT_SEQUENCE;
+  }
+  this.loadCardNumber(curSequenceArray);
+  if (typeof(Storage) !== "undefined") {
+    localStorage.setItem('sequenceType', this.scrumPoker);
+  } else {
+    // using session
+  }
+  this.caculateSizeCard(this.arrCard.length + 1);
+  this.events.publish('segment: changed',this.scrumPoker);
 }
 loadCardNumber(a) {
   if (a != this.T_SHIRT_SEQUENCE) {
@@ -149,30 +171,6 @@ caculateSizeCard(numOfCards) {
   this.isFewCards = (numOfCards <= 9)
     ? true
     : false;
-}
-
-changeSegment() {
-  var curSequenceArray = [];
-  this.arrCard = [];
-
-  if (this.scrumPoker == "fibonacci") {
-    curSequenceArray = this.FIBONACI_SEQUENCE;
-  } else if (this.scrumPoker == "ppoker") {
-    curSequenceArray = this.PLANING_POCKER_SEQUENCE;
-  } else if (this.scrumPoker == "natural") {
-    curSequenceArray = this.NATURAL_SEQUENCE;
-  } else if (this.scrumPoker == "tshirt") {
-    curSequenceArray = this.T_SHIRT_SEQUENCE;
-  }
-  this.loadCardNumber(curSequenceArray);
-  if (typeof(Storage) !== "undefined") {
-    localStorage.setItem('sequenceType', this.scrumPoker);
-    console.log("111: " + this.scrumPoker);  
-    console.log("112: " + localStorage.getItem('sequenceType'));  
-  } else {
-    // using session
-  }
-  this.caculateSizeCard(this.arrCard.length + 1);
 }
 itemTapped(event, item) {
   this

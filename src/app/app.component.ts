@@ -1,5 +1,5 @@
 import {Component, ViewChild } from '@angular/core';
-import {Nav, Platform, AlertController  } from 'ionic-angular';
+import {Nav, Platform, Events  } from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Storage} from '@ionic/storage';
@@ -35,43 +35,13 @@ export class MyApp {
   testRadioResult;
   constructor(public data : DataMenuPage, storage : Storage, public platform : Platform, 
               public statusBar : StatusBar, public splashScreen : SplashScreen, 
-              private insomnia : Insomnia, public alertCtrl: AlertController
+              private insomnia : Insomnia, public events: Events
               ) {
     this.initializeApp();
     this.loadData();
-  }
-  showAlert(){
-    let alert = this.alertCtrl.create();
-    alert.setTitle('Largest Card');
-
-    this.largestCard = this.getSequenceType();
-    console.log(this.largestCard)
-    for(var i=0;i<this.largestCard.length;i++)
-    {
-      alert.addInput({
-        type: 'radio',
-        label: this.largestCard[i].value,
-        value: this.largestCard[i].value,
-        checked: this.largestCard[i].check
-      });
-    }
-
-    alert.addButton('Cancel');
-    alert.addButton({
-      text: 'OK',
-      handler: data => {
-        this.testRadioOpen = false;
-        this.testRadioResult = data;
-        this.changeLargest(this.testRadioResult);
-        for(var j = 0; j< this.largestCard.length;j++){
-          if(this.testRadioResult == this.largestCard[j].value)
-            this.largestCard[j].check = true;
-          else
-            this.largestCard[j].check = false;
-        }
-      }
+    events.subscribe('segment: changed', (arrCard) =>{
+      this.getSequenceType();
     });
-    alert.present();
   }
   loadData() {
     this.deckcolors = this.data.deckcolors;
@@ -95,9 +65,16 @@ export class MyApp {
     }
     else{
       this.largestCard = null;
-      console.log(this.largestCard)
     }
     return this.largestCard;
+  }
+  changeLargest(maxCardNumber) {
+    //var maxCardNumber = this.model.maxCardNumber;
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem('maxCardNumber', maxCardNumber);
+    } 
+    this.nav.setRoot(this.rootPage);
+    console.log(localStorage.getItem('maxCardNumber'))
   }
   changeBackground() {
     var backgroundColor = this.model.background;
@@ -115,14 +92,6 @@ export class MyApp {
     if (this.model.background == null) 
       this.model.background = 'white';
     }
-  changeLargest(maxCardNumber) {
-    //var maxCardNumber = this.model.maxCardNumber;
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('maxCardNumber', maxCardNumber);
-    } 
-    this.nav.setRoot(this.rootPage);
-    console.log(localStorage.getItem('maxCardNumber'))
-  }
   changeDuration() {
     var duraTion = this.model.duration;
     if (typeof(Storage) !== "undefined") {

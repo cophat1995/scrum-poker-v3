@@ -17,14 +17,12 @@
           </div>
         </ion-select>
       </ion-item>
-      <ion-item>
-        <button (click)= "showAlert()">Show</button>
-      </ion-item>
+
       <ion-item>
         <ion-label class="item-select label-md">Largest Card</ion-label>
-        <ion-select (click)="changeLargest()">
+        <ion-select (ionChange)="changeLargest()">
           <div *ngFor="let large of largestCard">
-            <ion-option>{{large}}</ion-option>
+            <ion-option>{{large.value}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
