@@ -31,6 +31,7 @@ export class MyApp {
   largest_Natural = [];
   sequenceType;
 
+  maxCardNumber;
   maxCard_ppoker;
   maxCard_fibonacci;
   maxCard_natural;
@@ -61,26 +62,32 @@ export class MyApp {
     this.getSoundOn();
   }
   getMaxCard(){
-    this.maxCard_ppoker = localStorage.getItem('maxCard_ppoker');
-    this.maxCard_fibonacci = localStorage.getItem('maxCard_fibonacci');
-    this.maxCard_natural = localStorage.getItem('maxCard_natural');
+    if (this.sequenceType == null || this.sequenceType == 'ppoker') {
+      this.maxCardNumber = parseInt(localStorage.getItem('maxCard_ppoker')) ;
+    } else if (this.sequenceType == 'fibonacci') {
+      this.maxCardNumber = parseInt(localStorage.getItem('maxCard_fibonacci'));
+    } else if (this.sequenceType == 'natural') {
+      this.maxCardNumber = parseInt(localStorage.getItem('maxCard_natural'));
+    }
   }
   getSequenceType() {
     this.sequenceType = localStorage.getItem('sequenceType');
     if (this.sequenceType == null || this.sequenceType == 'ppoker') {
       this.largestCard = this.data.largest_PlaningPoker;
-      this.maxCard_ppoker = this.model.maxCardNumber;
+      this.maxCard_ppoker = this.maxCardNumber;
+      console.log('max pp: '+this.maxCardNumber)
     } else if (this.sequenceType == 'fibonacci') {
       this.largestCard = this.data.largest_Fibonacci;
-      this.maxCard_fibonacci = this.model.maxCardNumber;
+      this.maxCard_fibonacci = this.maxCardNumber;
+      console.log('max fibo: '+this.maxCardNumber)
     } else if (this.sequenceType == 'natural') {
       this.largestCard = this.data.largest_Natural;
-      this.maxCard_natural = this.model.maxCardNumber;
+      this.maxCard_natural = this.maxCardNumber;
+      console.log('max natu: '+this.maxCardNumber)
     }
     else{
       this.largestCard = null;
     }
-    return this.largestCard;
   }
   changeLargest() {
     this.getSequenceType();

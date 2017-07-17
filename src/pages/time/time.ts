@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {MenuController} from 'ionic-angular';
 import {NavController, Navbar} from 'ionic-angular';
+import {NativeAudio} from '@ionic-native/native-audio';
 @Component({templateUrl: 'time.html'})
 
 export class TimeDetails {
@@ -10,14 +11,19 @@ export class TimeDetails {
   time : any;
   atTime = 0;
   duraTion : any;
-  constructor(public menuCtrl : MenuController, public navCtrl : NavController) {
+  sound_value;
+  constructor(public menuCtrl : MenuController, public navCtrl : NavController, private nativeAudio : NativeAudio) {
     if (typeof(Storage) !== "undefined") {
       this.duraTion = localStorage.getItem('duraTion') || 10;
+      this.sound_value = localStorage.getItem('sound_value');
     }
     this.startTimer(this.duraTion);
     this
       .menuCtrl
       .enable(false);
+    this
+      .nativeAudio
+      .preloadSimple('time', 'assets/audio/clock-ticking.mp3');
   }
   startTimer(duraTion) {
     this.time = duraTion;
@@ -27,8 +33,10 @@ export class TimeDetails {
     }, 1000);
   }
   onTimeout() {
+    this.nativeAudio.play('time');
     if (this.time == 0) {
       clearInterval(this.mytimeout);
+      this.nativeAudio.stop('time');
     } else {
       this.time--;
     }
@@ -38,11 +46,13 @@ export class TimeDetails {
     if (this.time == 0) {
       this.time = this.duraTion;
       this.atTime = 1;
+      this.nativeAudio.stop('time');
     }
     if (this.atTime == 0) {
       this.atTime = 1;
       this.time = this.duraTion;
       clearTimeout(this.mytimeout);
+      this.nativeAudio.stop('time');
     } else {
       this.atTime = 0;
       clearTimeout(this.mytimeout);
