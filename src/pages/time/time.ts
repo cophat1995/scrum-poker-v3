@@ -31,6 +31,7 @@ export class TimeDetails {
     this.mytimeout = setInterval(function () {
       _this.onTimeout();
     }, 1000);
+    this.nativeAudio.stop('time');
   }
   onTimeout() {
     this.nativeAudio.play('time');
