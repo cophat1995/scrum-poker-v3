@@ -42,35 +42,40 @@ export class DataMenuPage {
 
     this.deckTime = [20,10,7,5,3];
     this.largest_PlaningPoker = [
-      {value:10,
-      check: false},
-      {value:20,
-      check: false},
-      {value:30,
-      check: false},
-      {value:40,
-      check: false},
+    1,
+    2,
+    3,
+    5,
+    8,
+    13,
+    20,
+    40
 
     ];
     this.largest_Fibonacci = [
-      {value:20,
-      check: false},
-      {value:30,
-      check: false},
-      {value:40,
-      check: false},
-      {value:50,
-      check: false},
-      {value:60,
-      check: false},
+      1,
+    2,
+    3,
+    5,
+    8,
+    13,
+    21,
+    34,
+    55
     ];
     this.largest_Natural = [
-      {value:9,
-      check: false},
-      {value:12,
-      check: false},
-      {value:15,
-      check: false},
+      1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
     ];
   }
 }

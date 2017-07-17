@@ -20,9 +20,9 @@
 
       <ion-item>
         <ion-label class="item-select label-md">Largest Card</ion-label>
-        <ion-select (ionChange)="changeLargest()">
+        <ion-select [(ngModel)]="model.maxCardNumber" (ionChange)="changeLargest()">
           <div *ngFor="let large of largestCard">
-            <ion-option>{{large.value}}</ion-option>
+            <ion-option>{{large}}</ion-option>
           </div>
         </ion-select>
       </ion-item>

@@ -70,6 +70,9 @@ export class Scrum {
   paddingTopLabel;
   fontSizeNumber = 2;
   isFewCards : boolean = true;
+  maxCard_ppoker;
+  maxCard_fibonacci;
+  maxCard_natural;
 
   constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController, public menuCtrl : MenuController, public events: Events) {
     this.loadData();
@@ -81,41 +84,49 @@ export class Scrum {
     if (typeof(Storage) !== "undefined") {
     sequenceType = localStorage.getItem('sequenceType');
     backgroundColor = localStorage.getItem('backgroundColor');
-    this.maxCardNumber = parseInt(localStorage.getItem('maxCardNumber')) || 100;
+    this.maxCard_ppoker = parseInt(localStorage.getItem('maxCard_ppoker')) || 200;
+    this.maxCard_fibonacci = parseInt(localStorage.getItem('maxCard_fibonacci')) || 200;
+    this.maxCard_natural = parseInt(localStorage.getItem('maxCard_natural')) || 200;
   }
   if (sequenceType == null || sequenceType == 'ppoker') {
     curSequenceArray = this.PLANING_POCKER_SEQUENCE;
     this.scrumPoker = 'ppoker';
+    this.loadCardNumber(curSequenceArray,this.maxCard_ppoker);
   } else if (sequenceType == 'fibonacci') {
     curSequenceArray = this.FIBONACI_SEQUENCE;
     this.scrumPoker = 'fibonacci';
+    this.loadCardNumber(curSequenceArray,this.maxCard_fibonacci);
   } else if (sequenceType == 'tshirt') {
     curSequenceArray = this.T_SHIRT_SEQUENCE;
     this.scrumPoker = 'tshirt';
+    this.loadCardNumber(curSequenceArray,200);
   } else {
     curSequenceArray = this.NATURAL_SEQUENCE;
     this.scrumPoker = 'natural';
+    this.loadCardNumber(curSequenceArray,this.maxCard_natural);
   }
   if (backgroundColor == null) {
     backgroundColor = "white"; // white, gray, cyan
   }
   this.bgColor = backgroundColor;
-  this.loadCardNumber(curSequenceArray);
 }
 changeSegment() {
   var curSequenceArray = [];
   this.arrCard = [];
-
-  if (this.scrumPoker == "fibonacci") {
-    curSequenceArray = this.FIBONACI_SEQUENCE;
-  } else if (this.scrumPoker == "ppoker") {
+  if (this.scrumPoker == "ppoker") {
     curSequenceArray = this.PLANING_POCKER_SEQUENCE;
+    this.loadCardNumber(curSequenceArray,this.maxCard_ppoker);
+  } else if (this.scrumPoker == "fibonacci") {
+    curSequenceArray = this.FIBONACI_SEQUENCE;
+    this.loadCardNumber(curSequenceArray,this.maxCard_fibonacci);
   } else if (this.scrumPoker == "natural") {
     curSequenceArray = this.NATURAL_SEQUENCE;
+    this.loadCardNumber(curSequenceArray,this.maxCard_natural);
+      
   } else if (this.scrumPoker == "tshirt") {
     curSequenceArray = this.T_SHIRT_SEQUENCE;
+    this.loadCardNumber(curSequenceArray,200);
   }
-  this.loadCardNumber(curSequenceArray);
   if (typeof(Storage) !== "undefined") {
     localStorage.setItem('sequenceType', this.scrumPoker);
   } else {
@@ -124,10 +135,10 @@ changeSegment() {
   this.caculateSizeCard(this.arrCard.length + 1);
   this.events.publish('segment: changed',this.scrumPoker);
 }
-loadCardNumber(a) {
+loadCardNumber(a,maxCard) {
   if (a != this.T_SHIRT_SEQUENCE) {
     for (var i = 0; i < a.length; i++) {
-      if (a[i] <= this.maxCardNumber) {
+      if (a[i] <= maxCard) {
         if (a[i] == 0.5) {
           this.arrCard[i] = "1/2";
         } else {

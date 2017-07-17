@@ -31,8 +31,10 @@ export class MyApp {
   largest_Natural = [];
   sequenceType;
 
-  testRadioOpen: boolean;
-  testRadioResult;
+  maxCard_ppoker;
+  maxCard_fibonacci;
+  maxCard_natural;
+
   constructor(public data : DataMenuPage, storage : Storage, public platform : Platform, 
               public statusBar : StatusBar, public splashScreen : SplashScreen, 
               private insomnia : Insomnia, public events: Events
@@ -41,6 +43,7 @@ export class MyApp {
     this.loadData();
     events.subscribe('segment: changed', (arrCard) =>{
       this.getSequenceType();
+      this.getMaxCard();
     });
   }
   loadData() {
@@ -54,27 +57,36 @@ export class MyApp {
     this.getScreenOn();
     this.getSoundOn();
   }
+  getMaxCard(){
+    this.maxCard_ppoker = localStorage.getItem('maxCard_ppoker');
+    this.maxCard_fibonacci = localStorage.getItem('maxCard_fibonacci');
+    this.maxCard_natural = localStorage.getItem('maxCard_natural');
+  }
   getSequenceType() {
     this.sequenceType = localStorage.getItem('sequenceType');
     if (this.sequenceType == null || this.sequenceType == 'ppoker') {
       this.largestCard = this.data.largest_PlaningPoker;
+      this.maxCard_ppoker = this.model.maxCardNumber;
     } else if (this.sequenceType == 'fibonacci') {
       this.largestCard = this.data.largest_Fibonacci;
+      this.maxCard_fibonacci = this.model.maxCardNumber;
     } else if (this.sequenceType == 'natural') {
       this.largestCard = this.data.largest_Natural;
+      this.maxCard_natural = this.model.maxCardNumber;
     }
     else{
       this.largestCard = null;
     }
     return this.largestCard;
   }
-  changeLargest(maxCardNumber) {
-    //var maxCardNumber = this.model.maxCardNumber;
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('maxCardNumber', maxCardNumber);
-    } 
+  changeLargest() {
+    this.getSequenceType();
+      if (typeof(Storage) !== "undefined") {
+        localStorage.setItem('maxCard_ppoker', this.maxCard_ppoker);
+        localStorage.setItem('maxCard_fibonacci', this.maxCard_fibonacci);
+        localStorage.setItem('maxCard_natural', this.maxCard_natural);
+      } 
     this.nav.setRoot(this.rootPage);
-    console.log(localStorage.getItem('maxCardNumber'))
   }
   changeBackground() {
     var backgroundColor = this.model.background;
