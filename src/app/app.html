@@ -18,10 +18,13 @@
         </ion-select>
       </ion-item>
       <ion-item>
+        <button (click)= "showAlert()">Show</button>
+      </ion-item>
+      <ion-item>
         <ion-label class="item-select label-md">Largest Card</ion-label>
-        <ion-select [(ngModel)]="model.maxCardNumber" (ionChange)="changeLargest()">
+        <ion-select (click)="changeLargest()">
           <div *ngFor="let large of largestCard">
-            <ion-option value="{{large}}">{{large}}</ion-option>
+            <ion-option>{{large}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
@@ -49,7 +52,7 @@
         <ion-label class="item-select label-md">Duracation</ion-label>
         <ion-select [(ngModel)]="model.duration" (ionChange)="changeDuration()">
           <div *ngFor="let time of deckTime">
-            <ion-option value="{{time.value}}" selected="true">{{time.title}}</ion-option>
+            <ion-option value="{{time}}" >{{time}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
