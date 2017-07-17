@@ -18,8 +18,8 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
-        <ion-label class="item-select label-md">Largest Card</ion-label>
+      <ion-item  [ngClass]="{'block-display':!tShirtSegment, 'none-display': tShirtSegment}">
+        <ion-label class="item-select label-md" >Largest Card</ion-label>
         <ion-select [(ngModel)]="model.maxCardNumber" (ionChange)="changeLargest()">
           <div *ngFor="let large of largestCard">
             <ion-option>{{large}}</ion-option>

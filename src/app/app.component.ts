@@ -35,6 +35,8 @@ export class MyApp {
   maxCard_fibonacci;
   maxCard_natural;
 
+  tShirtSegment = false;
+
   constructor(public data : DataMenuPage, storage : Storage, public platform : Platform, 
               public statusBar : StatusBar, public splashScreen : SplashScreen, 
               private insomnia : Insomnia, public events: Events
@@ -44,6 +46,7 @@ export class MyApp {
     events.subscribe('segment: changed', (arrCard) =>{
       this.getSequenceType();
       this.getMaxCard();
+      this.tShirtSegment = (arrCard == "tshirt") ? true : false;
     });
   }
   loadData() {
