@@ -17,11 +17,14 @@
           </div>
         </ion-select>
       </ion-item>
+      <div id='div' *ngFor="let large of largestCard">
+        A--{{large}}--A
+      </div>
       <ion-item>
         <ion-label class="item-select label-md">Largest Card</ion-label>
         <ion-select [(ngModel)]="model.maxCardNumber" (ionChange)="changeLargest()">
           <div *ngFor="let large of largestCard">
-            <ion-option value="{{large}}">{{large}}</ion-option>
+            <ion-option>{{large}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
@@ -49,7 +52,7 @@
         <ion-label class="item-select label-md">Duracation</ion-label>
         <ion-select [(ngModel)]="model.duration" (ionChange)="changeDuration()">
           <div *ngFor="let time of deckTime">
-            <ion-option value="{{time}}" selected="true">{{time}}</ion-option>
+            <ion-option value="{{time}}" >{{time}}</ion-option>
           </div>
         </ion-select>
       </ion-item>

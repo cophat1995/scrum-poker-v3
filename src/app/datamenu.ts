@@ -40,17 +40,7 @@ export class DataMenuPage {
       }
     ];
 
-    this.deckTime = [
-      {
-        time: '10',
-      }, {
-        time: '7',
-      }, {
-        time: '5',
-      }, {
-        time: '3',
-      }
-    ];
+    this.deckTime = [20,10,7,5,3];
     this.largest_PlaningPoker = [7, 8, 9];
     this.largest_Fibonacci = [10, 20];
     this.largest_Natural = [10, 11, 12];

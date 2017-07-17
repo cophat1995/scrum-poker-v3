@@ -35,6 +35,7 @@ export class MyApp {
               private insomnia : Insomnia,
               ) {
     this.initializeApp();
+    this.loadData();
   }
   loadData() {
     this.deckcolors = this.data.deckcolors;
@@ -48,6 +49,7 @@ export class MyApp {
     this.getSoundOn();
   }
   getSequenceType() {
+    this.largestCard = [];
     this.sequenceType = localStorage.getItem('sequenceType');
     if (this.sequenceType == null || this.sequenceType == 'ppoker') {
       this.largestCard = this.data.largest_PlaningPoker;
@@ -56,8 +58,6 @@ export class MyApp {
     } else if (this.sequenceType == 'natural') {
       this.largestCard = this.data.largest_Natural;
     }
-    console.log(this.sequenceType + ' of menu');
-    console.log("largestCard: " + this.largestCard);
   }
   changeBackground() {
     var backgroundColor = this.model.background;
@@ -94,7 +94,7 @@ export class MyApp {
     this.model.duration = localStorage.getItem('duraTion');
     if (this.model.duration == null) 
       this.model.duration = 10;
-    }
+  }
   autoHide() {
     if (typeof(Storage) !== "undefined") {
       if (this.autoHide_value == true) 

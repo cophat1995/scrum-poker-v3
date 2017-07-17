@@ -12,7 +12,7 @@ export class TimeDetails {
   duraTion : any;
   constructor(public menuCtrl : MenuController, public navCtrl : NavController) {
     if (typeof(Storage) !== "undefined") {
-      this.duraTion = parseInt(localStorage.getItem('duraTion')) || 10;
+      this.duraTion = localStorage.getItem('duraTion') || 10;
     }
     this.startTimer(this.duraTion);
     this
