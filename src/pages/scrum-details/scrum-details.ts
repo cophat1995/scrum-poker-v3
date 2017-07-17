@@ -58,7 +58,7 @@ export class ScrumDetails {
       this.contentChild.height = window.innerWidth*1.4;
       this.contentChild.marginTop = (window.innerHeight - 56 - this.contentChild.height)/2; // translate to center of page (vertically)
     }
-    else if(ratioScreen < 1.45) {
+    else if(ratioScreen < 1.35) {
       this.contentChild.height = window.innerHeight - 56; //56 is Nav bar Size
       this.contentChild.width = window.innerHeight/1.4;
       this.contentChild.marginLeft = (window.innerWidth - this.contentChild.width)/2; // translate to center of page (horizontally)
