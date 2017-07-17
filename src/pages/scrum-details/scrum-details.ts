@@ -58,7 +58,7 @@ export class ScrumDetails {
       this.contentChild.height = window.innerWidth*1.4;
       this.contentChild.marginTop = (window.innerHeight - 56 - this.contentChild.height)/2; // translate to center of page (vertically)
     }
-    else if(ratioScreen < 1.45) {
+    else if(ratioScreen < 1.35) {
       this.contentChild.height = window.innerHeight - 56; //56 is Nav bar Size
       this.contentChild.width = window.innerHeight/1.4;
       this.contentChild.marginLeft = (window.innerWidth - this.contentChild.width)/2; // translate to center of page (horizontally)
@@ -69,16 +69,12 @@ export class ScrumDetails {
     }
   }
   roTate() {
-    var randomIndex = Math.floor((Math.random() * 6) + 1);
     if (this.currentDeg == 'rotateY(0)') {
       this.currentDeg = 'rotateY(180deg)';
       document
         .getElementById("item")
         .style
         .transform = 'rotateY(180deg)';
-      document
-        .getElementById('card-back')
-        .setAttribute('src', "assets/image-scrum/b" + randomIndex + ".jpg");
     } else {
       this.currentDeg = 'rotateY(0)';
       document
