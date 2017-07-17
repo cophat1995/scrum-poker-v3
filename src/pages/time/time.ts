@@ -28,15 +28,15 @@ export class TimeDetails {
   startTimer(duraTion) {
     this.time = duraTion;
     var _this = this;
+    this.nativeAudio.play('time');
     this.mytimeout = setInterval(function () {
       _this.onTimeout();
     }, 1000);
-    this.nativeAudio.stop('time');
   }
   onTimeout() {
-    this.nativeAudio.play('time');
-    if (this.time == 0) {
+    if (this.time <= 0) {
       clearInterval(this.mytimeout);
+      this.mytimeout = undefined;
       this.nativeAudio.stop('time');
     } else {
       this.time--;
