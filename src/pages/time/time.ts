@@ -58,7 +58,6 @@ export class TimeDetails {
       this.atTime = 0;
       clearTimeout(this.mytimeout);
       this.startTimer(this.duraTion);
-      this.nativeAudio.stop('time');
     }
   }
   ionViewDidLoad() {
