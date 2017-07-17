@@ -42,17 +42,13 @@ export class DataMenuPage {
 
     this.deckTime = [
       {
-        value: '10',
-        title: '10'
+        time: '10',
       }, {
-        value: '7',
-        title: '7'
+        time: '7',
       }, {
-        value: '5',
-        title: '5'
+        time: '5',
       }, {
-        value: '3',
-        title: '3'
+        time: '3',
       }
     ];
     this.largest_PlaningPoker = [7, 8, 9];

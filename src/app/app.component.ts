@@ -13,7 +13,7 @@ export class MyApp {
   @ViewChild(Nav)nav : Nav;
   rootPage : any = Scrum;
   mainPage : any = Scrum;
-  pages : Array < {
+  pages : Array < { 
     title: string,
     component: any
   } >;
