@@ -9,8 +9,10 @@
           <label class="number">{{selectedItem}}</label>
         </div>
       </div>
-      <div class="back">
-        <img id="card-back" class="img-back" src="assets/image-scrum/back.jpg">
+      <div class="back" [ngStyle]="{'background-color': bgColor}">
+        <div class="img-back">
+          <img id="card-back" src="assets/logo.png">
+        </div>
       </div>
     </div>
   </div>

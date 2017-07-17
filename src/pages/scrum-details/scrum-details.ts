@@ -69,16 +69,12 @@ export class ScrumDetails {
     }
   }
   roTate() {
-    var randomIndex = Math.floor((Math.random() * 6) + 1);
     if (this.currentDeg == 'rotateY(0)') {
       this.currentDeg = 'rotateY(180deg)';
       document
         .getElementById("item")
         .style
         .transform = 'rotateY(180deg)';
-      document
-        .getElementById('card-back')
-        .setAttribute('src', "assets/image-scrum/b" + randomIndex + ".jpg");
     } else {
       this.currentDeg = 'rotateY(0)';
       document

@@ -50,12 +50,14 @@
 /* back, initially hidden pane */
 .back {
     transform: rotateY(180deg);
+    border-radius: 18px;
 }
 .img-back{
     border: ridge #ddd;
     border-radius: 18px;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 .cl-lbl{
     height:100%;
@@ -69,6 +71,14 @@
     display: inline;
     font-size: 7em;
     height: 100%;
+}
+
+#card-back{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 .none-display{
