@@ -28,7 +28,10 @@ export class ScrumDetails {
       this.autoHide_value = localStorage.getItem('autoHide_value');
       this.sound_value = localStorage.getItem('sound_value');
     }
-    this.bgColor = backgroundColor;
+    if(backgroundColor == null)
+      this.bgColor = 'white';
+    else 
+      this.bgColor = backgroundColor;
     if (this.autoHide_value == null) 
       this.currentDeg = 'rotateY(0)';
     else {

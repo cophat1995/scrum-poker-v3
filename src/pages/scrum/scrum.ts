@@ -80,7 +80,7 @@ export class Scrum {
   loadData() {
     var curSequenceArray = [];
     var sequenceType; // fibonaci, planing-pocker, natural, t-shirt
-    var backgroundColor = 'white'; // default is #fffff;\
+    var backgroundColor; // default is #fffff;\
     if (typeof(Storage) !== "undefined") {
     sequenceType = localStorage.getItem('sequenceType');
     backgroundColor = localStorage.getItem('backgroundColor');
@@ -105,10 +105,10 @@ export class Scrum {
     this.scrumPoker = 'natural';
     this.loadCardNumber(curSequenceArray,this.maxCard_natural);
   }
-  if (backgroundColor == null) {
-    backgroundColor = "white"; // white, gray, cyan
-  }
-  this.bgColor = backgroundColor;
+  if(backgroundColor == null)
+    this.bgColor = 'white';
+  else 
+    this.bgColor = backgroundColor;
 }
 changeSegment() {
   var curSequenceArray = [];
