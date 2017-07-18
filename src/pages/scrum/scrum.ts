@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {Storage} from '@ionic/storage';
-import {NavController, NavParams, ModalController, MenuController, Nav, Events} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Nav, Events} from 'ionic-angular';
 import {ScrumDetails} from '../scrum-details/scrum-details';
 import {TimeDetails} from '../time/time';
 import {MyApp} from '../../app/app.component';
@@ -30,7 +30,7 @@ export class Scrum {
   maxCard_fibonacci;
   maxCard_natural;
 
-  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public modalCtrl : ModalController, public menuCtrl : MenuController, public events: Events) {
+  constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public menuCtrl : MenuController, public events: Events) {
     this.loadData();
     console.log(this.NATURAL_SEQUENCE);
   }
