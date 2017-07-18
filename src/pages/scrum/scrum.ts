@@ -11,8 +11,8 @@ export class Scrum {
   menuPage : any = MyApp;
 
   IMG_SEQUENCE = ['assets/coffee.png']
-  SPECIAL_SEQUENCE = ['$'];
-    PLANING_POCKER_SEQUENCE = [0, 1/2, 1, 2, 3, 5, 8, 13, 20, 40, 100];
+  SPECIAL_SEQUENCE = ['∞'];
+  PLANING_POCKER_SEQUENCE = [0, 1/2, 1, 2, 3, 5, 8, 13, 20, 40, 100];
   FIBONACI_SEQUENCE = [0,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987];
   T_SHIRT_SEQUENCE = ['XS','S','M','L','XL','XXL','XXXL'];
   NATURAL_SEQUENCE = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
