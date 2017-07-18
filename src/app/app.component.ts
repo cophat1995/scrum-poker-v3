@@ -12,7 +12,6 @@ import {DataMenuPage} from './datamenu';
 export class MyApp {
   @ViewChild(Nav)nav : Nav;
   rootPage : any = Scrum;
-  mainPage : any = Scrum;
   pages : Array < { 
     title: string,
     component: any
@@ -26,9 +25,9 @@ export class MyApp {
   sound_value : boolean;
 
   largestCard = [];
-  largest_PlaningPoker = [];
-  largest_Fibonacci = [];
-  largest_Natural = [];
+  largest_PlaningPoker = this.data.largest_PlaningPoker;
+  largest_Fibonacci = this.data.largest_Fibonacci;
+  largest_Natural = this.data.largest_Natural;
   sequenceType;
 
   maxCardNumber;
@@ -73,15 +72,17 @@ export class MyApp {
   getSequenceType() {
     this.sequenceType = localStorage.getItem('sequenceType');
     if (this.sequenceType == null || this.sequenceType == 'ppoker') {
-      this.largestCard = this.data.largest_PlaningPoker;
+      this.largestCard = this.largest_PlaningPoker;
       this.maxCard_ppoker = this.maxCardNumber;
       console.log('max pp: '+this.maxCardNumber)
+
     } else if (this.sequenceType == 'fibonacci') {
-      this.largestCard = this.data.largest_Fibonacci;
+      this.largestCard = this.largest_Fibonacci;
       this.maxCard_fibonacci = this.maxCardNumber;
       console.log('max fibo: '+this.maxCardNumber)
+
     } else if (this.sequenceType == 'natural') {
-      this.largestCard = this.data.largest_Natural;
+      this.largestCard = this.largest_Natural;
       this.maxCard_natural = this.maxCardNumber;
       console.log('max natu: '+this.maxCardNumber)
     }

@@ -9,10 +9,9 @@ export class DataMenuPage {
 
   deckcolors = [];
   deckTime = [];
-
-  largest_PlaningPoker = [];
-  largest_Fibonacci = [];
-  largest_Natural = [];
+  largest_PlaningPoker =[];
+  largest_Fibonacci=[];
+  largest_Natural=[];
 
   constructor() {
     this.deckcolors = [
@@ -41,41 +40,9 @@ export class DataMenuPage {
     ];
 
     this.deckTime = [20,10,7,5,3];
-    this.largest_PlaningPoker = [
-    1,
-    2,
-    3,
-    5,
-    8,
-    13,
-    20,
-    40
 
-    ];
-    this.largest_Fibonacci = [
-      1,
-    2,
-    3,
-    5,
-    8,
-    13,
-    21,
-    34,
-    55
-    ];
-    this.largest_Natural = [
-      1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12
-    ];
+    this.largest_PlaningPoker = [5, 8, 13, 20, 40, 100];
+    this.largest_Fibonacci = [8,13,21,34,55,89,144,233,377,610,987];
+    this.largest_Natural = [6,7,8,9,10,11,12,13,14,15,16];
   }
 }
