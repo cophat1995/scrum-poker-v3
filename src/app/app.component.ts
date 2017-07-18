@@ -106,8 +106,7 @@ export class MyApp {
     } else {
       // using session
     }
-    //this.nav.setRoot(this.rootPage);
-    location.reload();
+    this.nav.setRoot(this.rootPage);
   }
   getBackground() {
     this.model.background = localStorage.getItem('backgroundColor');

@@ -15,28 +15,28 @@ export class DataMenuPage {
 
   constructor() {
     this.deckcolors = [
-      {
-        value: 'white',
-        title: 'White'
+       {
+        value: '#0099FF',
+        title: 'Blue'
       }, {
-        value: 'gainsboro',
-        title: 'Gainsboro'
+        value: '#FF6600',
+        title: 'Orange'
       }, {
-        value: 'cyan',
-        title: 'Cyan'
+        value: '#000080',
+        title: 'Navy '
       }, {
-        value: 'pink',
-        title: 'Pink'
-      }, {
-        value: 'lightgreen',
-        title: 'Light Green'
+        value: '#97d897',
+        title: 'Green'
       }, {
         value: 'lightyellow',
-        title: 'Light Yellow'
-      }, {
-        value: 'lightblue',
-        title: 'Light Blue'
-      }
+        title: 'Yellow'
+      },{
+        value: 'rgb(71, 117, 117)',
+        title: 'DarkSlateGray'
+      },{
+        value: 'rgb(108, 140, 173)',
+        title: 'LightSlateGray'
+      },
     ];
 
     this.deckTime = [20,10,7,5,3];

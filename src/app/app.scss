@@ -15,31 +15,40 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 .toolbar-background-md{
-    border-color: #0d0d0d;
-    background: #0d0d0d;
+  border-color: #0d0d0d;
+  background: #0d0d0d;
 }
 .toolbar-title-md{
-    color: white;
-    text-align: center
+  color: white;
+  text-align: center
 }
 .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
-    color: white;
+  color: white;
 }
 .app_content{
   background: #0d0d0d; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#808080, #999999, #595959, #0d0d0d); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#808080, #999999, #595959, #0d0d0d); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#808080, #999999, #595959, #0d0d0d); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#808080, #999999, #595959, #0d0d0d);
+  background: -webkit-linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d);
   .item-md{
       background: none;
   }
   .list_header{
-    color: white;
+    color: #11f1f1 !important;
     font-size: 1.5em;
-    border: none;
-    
-}
+    margin-top: 2em;
+    border-bottom: 2px solid #211f1f;   
+  }
+  .list-header-md {
+    border-top: none;
+    padding-left: 11px;
+    min-height: 4.5rem;
+    margin-top: 6px;
+    font-size: 1.2rem;
+    color: #757575;
+  }
+  //Item select menu
   .item-select .label-md{
     color: white;
   }
@@ -52,10 +61,32 @@
   .select-md .select-icon .select-icon-inner{
       color: white;
   }
+
   .block-display{
       display: block;
   }
   .none-display{
       display: none;
   }
+  .list-md .item-block .item-inner{
+      border-bottom: 1px solid #807d7d;
+  }
+
+  //Toggle icon
+  .toggle-md.toggle-checked .toggle-inner{
+      background-color: #11f1f1;
+  }
+  .toggle-md.toggle-checked .toggle-icon {
+    background-color: #bcf7f7;
+  }
+  .toggle-md .toggle-icon {
+    background-color: #9e9e9e;
+  }
+  .toggle-md .toggle-inner {
+    background-color: #d0cece;
+  }
+}
+//border Bottom select ietem
+.app_content .list-md .item-block .item-inner {
+  border-bottom: 1px solid #424040;
 }

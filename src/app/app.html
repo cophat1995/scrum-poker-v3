@@ -5,8 +5,8 @@
         {{p.title}}
       </button>-->
 
-      <ion-list-header class="list_header">
-        Deck Settings
+      <ion-list-header>
+        <ion-label class="list_header">DECK SETTINGS</ion-label>
       </ion-list-header>
 
       <ion-item>
@@ -27,25 +27,23 @@
         </ion-select>
       </ion-item>
         
-      <ion-list-header class="list_header">
-        General Settings
+      <ion-list-header>
+        <ion-label class="list_header"> GENERAL SETTINGS</ion-label>
       </ion-list-header>
       <ion-item>
         <ion-label class="label-md">Auto-Hide Card</ion-label>
-        <ion-toggle [(ngModel)]="autoHide_value" (ionChange)="autoHide()" color="royal"></ion-toggle>
+        <ion-toggle [(ngModel)]="autoHide_value" (ionChange)="autoHide()"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label class="label-md">Card Sounds</ion-label>
-        <ion-toggle [(ngModel)]="sound_value" (ionChange)="soundOn()" color="royal"></ion-toggle>
+        <ion-toggle [(ngModel)]="sound_value" (ionChange)="soundOn()"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label class="label-md">Keep Screen on</ion-label>
-        <ion-toggle [(ngModel)]="keepScreen_value" (ionChange)="keepScreenOn()" color="royal"></ion-toggle>
+        <ion-toggle [(ngModel)]="keepScreen_value" (ionChange)="keepScreenOn()"></ion-toggle>
       </ion-item>
 
-      <ion-list-header class="list_header">
-        Time Settings
-      </ion-list-header>
+      <ion-list-header><ion-label class="list_header">TIME SETTINGS</ion-label></ion-list-header>
       <ion-item>
         <ion-label class="item-select label-md">Duracation</ion-label>
         <ion-select [(ngModel)]="model.duration" (ionChange)="changeDuration()">

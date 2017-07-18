@@ -1,10 +1,10 @@
 .scrum-detail-scss{
   .scroll-content{
-    background: #808080; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#808080, #999999, #595959, #0d0d0d);
-    background: -moz-linear-gradient(#808080, #999999, #595959, #0d0d0d);
-    background: -o-linear-gradient(#808080, #999999, #595959, #0d0d0d);
-    background: linear-gradient(#808080, #999999, #595959, #0d0d0d); /* For Safari 5.1 to 6.0 */ /* For Opera 11.1 to 12.0 */ /* For Firefox 3.6 to 15 */
+    background: #0d0d0d; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#0d0d0d, #333333, #333333, #0d0d0d);
   }
 }
 .scroll-content-child{
@@ -42,6 +42,7 @@
     background: white;
 }
 .number{
+    color: white;
     font-size: 8em;
     position: absolute;
     top:50%;
@@ -70,7 +71,7 @@
 .img-cf{
     display: inline;
     font-size: 7em;
-    height: 100%;
+    margin-top: 0.5em;
 }
 
 #card-back{

@@ -32,7 +32,6 @@ export class Scrum {
 
   constructor(storage : Storage, public navCtrl : NavController, public navParams : NavParams, public menuCtrl : MenuController, public events: Events) {
     this.loadData();
-    console.log(this.NATURAL_SEQUENCE);
   }
   loadData() {
     var curSequenceArray = [];

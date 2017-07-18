@@ -32,7 +32,7 @@ export class ScrumDetails {
       this.bgColor = 'white';
     else 
       this.bgColor = backgroundColor;
-    if (this.autoHide_value == null) 
+    if (this.autoHide_value == null || this.autoHide_value == 'rotateY(0)') 
       this.currentDeg = 'rotateY(0)';
     else {
       this.currentDeg = 'rotateY(0)';
