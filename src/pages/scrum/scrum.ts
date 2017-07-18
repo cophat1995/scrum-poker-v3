@@ -80,7 +80,7 @@ export class Scrum {
   loadData() {
     var curSequenceArray = [];
     var sequenceType; // fibonaci, planing-pocker, natural, t-shirt
-    var backgroundColor; // default is #fffff;\
+    var backgroundColor = 'white'; // default is #fffff;\
     if (typeof(Storage) !== "undefined") {
     sequenceType = localStorage.getItem('sequenceType');
     backgroundColor = localStorage.getItem('backgroundColor');
