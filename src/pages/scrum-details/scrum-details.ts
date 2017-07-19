@@ -29,7 +29,7 @@ export class ScrumDetails {
       this.sound_value = localStorage.getItem('sound_value');
     }
     if(backgroundColor == null)
-      this.bgColor = 'white';
+      this.bgColor = '#0099FF';
     else 
       this.bgColor = backgroundColor;
     if (this.autoHide_value == null || this.autoHide_value == 'rotateY(0)') 

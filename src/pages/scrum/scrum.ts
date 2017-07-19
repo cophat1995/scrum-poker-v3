@@ -62,7 +62,7 @@ export class Scrum {
     this.loadCardNumber(curSequenceArray,this.maxCard_natural);
   }
   if(backgroundColor == null)
-    this.bgColor = 'white';
+    this.bgColor = '#0099FF';
   else 
     this.bgColor = backgroundColor;
 }

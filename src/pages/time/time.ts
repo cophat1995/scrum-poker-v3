@@ -17,18 +17,20 @@ export class TimeDetails {
       this.duraTion = localStorage.getItem('duraTion') || 10;
       this.sound_value = localStorage.getItem('sound_value');
     }
-    this.startTimer(this.duraTion);
+    /*this
+      .nativeAudio
+      .preloadSimple('time', 'assets/audio/clock-ticking.mp3');*/
+    this
+      .nativeAudio
+      .preloadSimple('endtime', 'assets/audio/endtime.mp3');
     this
       .menuCtrl
       .enable(false);
-    this
-      .nativeAudio
-      .preloadSimple('time', 'assets/audio/clock-ticking.mp3');
+    this.startTimer(this.duraTion);
   }
   startTimer(duraTion) {
     this.time = duraTion;
     var _this = this;
-    this.nativeAudio.play('time');
     this.mytimeout = setInterval(function () {
       _this.onTimeout();
     }, 1000);
@@ -37,7 +39,7 @@ export class TimeDetails {
     if (this.time <= 0) {
       clearInterval(this.mytimeout);
       this.mytimeout = undefined;
-      this.nativeAudio.stop('time');
+      this.nativeAudio.play('endtime');
     } else {
       this.time--;
     }
@@ -47,13 +49,12 @@ export class TimeDetails {
     if (this.time == 0) {
       this.time = this.duraTion;
       this.atTime = 1;
-      this.nativeAudio.stop('time');
     }
     if (this.atTime == 0) {
       this.atTime = 1;
       this.time = this.duraTion;
       clearTimeout(this.mytimeout);
-      this.nativeAudio.stop('time');
+      this.nativeAudio.stop('endtime');
     } else {
       this.atTime = 0;
       clearTimeout(this.mytimeout);
@@ -68,6 +69,7 @@ export class TimeDetails {
       this
         .menuCtrl
         .enable(true);
+    this.nativeAudio.unload('endtime')
     };
   }
 }

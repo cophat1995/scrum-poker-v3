@@ -39,17 +39,34 @@
     transform: rotateY(0deg);
     background: white;
 }
+.front_inline{
+    position: absolute;
+    top: 4%;
+    bottom: 4%;
+    right: 6%;
+    left: 6%;
+    border-radius: 15px;
+    line-height: 5em;
+}
+.cl-label{
+    height:100%;
+    display: block;
+}
 .number{
+    top: 50%;
     color: white;
     font-size: 8em;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
-    bottom: -42%;
-    right: -41%;
-    left: 50%;
-    border-radius: 15px;
-    line-height: 5em;
+}
+.cl-img{
+    height: 100%;
+    display: block;
+}
+.img-cf{
+    display: inline;
+    font-size: 7em;
+    padding-top: 20%;
 }
 /* back, initially hidden pane */
 .back {
@@ -62,23 +79,6 @@
     height: 100%;
     position: relative;
 }
-.cl-lbl{
-    height:100%;
-    display: block;
-}
-.cl-img{
-    height: 100%;
-    display: block;
-}
-.img-cf{
-    display: inline;
-    font-size: 7em;
-    margin-top: 5%;
-    width: 90%;
-    height: 93%;
-    border-radius: 15px;
-}
-
 #card-back{
     position: absolute;
     top: 50%;

@@ -2,11 +2,13 @@
   <div class="scroll-content-child" [ngStyle]="{'width.px': contentChild.width, 'height.px': contentChild.height, 'margin-top.px': contentChild.marginTop, 'margin-left.px': contentChild.marginLeft}">
     <div id="item" class="flipper" (click)="roTate()">
       <div class="front">
-        <div class="cl-img" [ngClass]="{'none-display': typeCard, 'block-display': !typeCard}">
-          <img [ngStyle]="{'background-color': bgColor}" id='img-cf' class="img-cf" src="{{img}}">
-        </div>
-        <div class="cl-lbl" id="img-number" [ngClass]="{'block-display':typeCard, 'none-display': !typeCard}">
-          <label [ngStyle]="{'background-color': bgColor}" class="number">{{selectedItem}}</label>
+        <div class="front_inline" [ngStyle]="{'background-color': bgColor}">
+          <div class="cl-img" [ngClass]="{'none-display': typeCard, 'block-display': !typeCard}">
+            <img class="img-cf" src="{{img}}">
+          </div>
+          <div class="cl-label" [ngClass]="{'block-display':typeCard, 'none-display': !typeCard}">
+            <label class="number">{{selectedItem}}</label>
+          </div>
         </div>
       </div>
       <div class="back" [ngStyle]="{'background-color': bgColor}">
