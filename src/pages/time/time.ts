@@ -23,6 +23,7 @@ export class TimeDetails {
     this
       .nativeAudio
       .preloadSimple('endtime', 'assets/audio/endtime.mp3');
+      
     this
       .menuCtrl
       .enable(false);
