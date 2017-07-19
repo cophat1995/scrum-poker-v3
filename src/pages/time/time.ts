@@ -28,7 +28,7 @@ export class TimeDetails {
       .menuCtrl
       .enable(false);
     this.startTimer(this.duraTion);
-  }
+  }     
   startTimer(duraTion) {
     this.time = duraTion;
     var _this = this;
