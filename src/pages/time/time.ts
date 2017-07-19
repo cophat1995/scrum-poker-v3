@@ -33,7 +33,7 @@ export class TimeDetails {
     this.time = duraTion;
     var _this = this;
     this.mytimeout = setInterval(function () {
-      _this.onTimeout();
+      _this.onTimeout(); 
     }, 1000);
   }
   onTimeout() {
