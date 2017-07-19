@@ -24,18 +24,18 @@ export class DataMenuPage {
       }, {
         value: '#97d897',
         title: 'Green'
-      }, {
-        value: '#c5c548',
-        title: 'Yellow'
       },{
         value: 'rgb(150, 152, 154)',
         title: 'Gray'
       },{
+        value: '#861515',
+        title: 'Falu Red'
+      },{
         value: 'rgb(71, 117, 117)',
-        title: 'DarkSlateGray'
+        title: 'Ming'
       },{
         value: 'rgb(108, 140, 173)',
-        title: 'LightSlateGray'
+        title: 'Bermuda Grey'
       },
     ];
 

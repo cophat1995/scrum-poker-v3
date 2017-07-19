@@ -17,12 +17,13 @@ export class TimeDetails {
       this.duraTion = localStorage.getItem('duraTion') || 10;
       this.sound_value = localStorage.getItem('sound_value');
     }
+    if (this.sound_value == 'true') 
+      this.nativeAudio.preloadSimple('endtime', 'assets/audio/endtime.mp3');
+    else 
+      this.nativeAudio.unload('endtime');
     /*this
       .nativeAudio
       .preloadSimple('time', 'assets/audio/clock-ticking.mp3');*/
-    this
-      .nativeAudio
-      .preloadSimple('endtime', 'assets/audio/endtime.mp3');
       
     this
       .menuCtrl
@@ -72,5 +73,8 @@ export class TimeDetails {
         .enable(true);
     this.nativeAudio.unload('endtime')
     };
+  }
+  ionViewDidLeave(){
+    clearTimeout(this.mytimeout);
   }
 }
