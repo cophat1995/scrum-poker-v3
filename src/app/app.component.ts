@@ -74,17 +74,14 @@ export class MyApp {
     if (this.sequenceType == null || this.sequenceType == 'ppoker') {
       this.largestCard = this.largest_PlaningPoker;
       this.maxCard_ppoker = this.maxCardNumber;
-      console.log('max pp: '+this.maxCardNumber)
 
     } else if (this.sequenceType == 'fibonacci') {
       this.largestCard = this.largest_Fibonacci;
       this.maxCard_fibonacci = this.maxCardNumber;
-      console.log('max fibo: '+this.maxCardNumber)
 
     } else if (this.sequenceType == 'natural') {
       this.largestCard = this.largest_Natural;
       this.maxCard_natural = this.maxCardNumber;
-      console.log('max natu: '+this.maxCardNumber)
     }
     else{
       this.largestCard = null;

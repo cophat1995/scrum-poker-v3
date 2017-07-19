@@ -22,14 +22,14 @@ export class DataMenuPage {
         value: '#FF6600',
         title: 'Orange'
       }, {
-        value: '#000080',
-        title: 'Navy '
-      }, {
         value: '#97d897',
         title: 'Green'
       }, {
-        value: 'lightyellow',
+        value: '#c5c548',
         title: 'Yellow'
+      },{
+        value: 'rgb(150, 152, 154)',
+        title: 'Gray'
       },{
         value: 'rgb(71, 117, 117)',
         title: 'DarkSlateGray'

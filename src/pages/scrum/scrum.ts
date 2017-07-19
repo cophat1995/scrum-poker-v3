@@ -10,12 +10,12 @@ export class Scrum {
   @ViewChild(Nav)nav : Nav;
   menuPage : any = MyApp;
 
-  IMG_SEQUENCE = ['assets/coffee.png']
-  SPECIAL_SEQUENCE = ['∞'];
+  IMG_SEQUENCE = ['assets/coffee_white.png']
+  SPECIAL_SEQUENCE = ['∞','?'];
   PLANING_POCKER_SEQUENCE = [0, 1/2, 1, 2, 3, 5, 8, 13, 20, 40, 100];
   FIBONACI_SEQUENCE = [0,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987];
-  T_SHIRT_SEQUENCE = ['XS','S','M','L','XL','XXL','XXXL'];
   NATURAL_SEQUENCE = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  T_SHIRT_SEQUENCE = [];
   arrCard = [];
   bgColor = 'white';
   selectedItem : any;
@@ -81,7 +81,7 @@ changeSegment() {
       
   } else if (this.scrumPoker == "tshirt") {
     curSequenceArray = this.T_SHIRT_SEQUENCE;
-    this.loadCardNumber(curSequenceArray,200);
+    this.loadCardNumber(curSequenceArray,100);
   }
   if (typeof(Storage) !== "undefined") {
     localStorage.setItem('sequenceType', this.scrumPoker);
@@ -103,20 +103,21 @@ loadCardNumber(a,maxCard) {
       }
     }
   } else {
-    this.arrCard = this.T_SHIRT_SEQUENCE;
+    this.arrCard = ['XS','S','M','L','XL','XXL','XXXL'];
   }
   this.add_SpecialCard();
 }
 add_SpecialCard() {
   var maxCard = this.arrCard.length + this.SPECIAL_SEQUENCE.length;
-  for (var j = this.arrCard.length; j < maxCard; j++) {
-    for (var z = 0; z < this.SPECIAL_SEQUENCE.length; z++) {
-      if (this.arrCard[j - 1] != this.SPECIAL_SEQUENCE[z]) {
-        this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[j - this.arrCard.length];
-      } else 
+  for (var z = 0; z < this.SPECIAL_SEQUENCE.length; z++) {
+    for (var j = this.arrCard.length; j < maxCard; j++){
+      if (this.arrCard[j-1] !== this.SPECIAL_SEQUENCE[z]) {
+        this.arrCard[j] = "" + this.SPECIAL_SEQUENCE[z];
+      } else {
         break;
       }
     }
+  }
   this.caculateSizeCard(this.arrCard.length + 1);
 }
 
