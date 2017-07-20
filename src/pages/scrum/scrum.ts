@@ -103,7 +103,7 @@ loadCardNumber(a,maxCard) {
       }
     }
   } else {
-    this.arrCard = ['XS','S','M','L','XL','XXL','XXXL'];
+    this.arrCard = ['XS','S','M','L','XL','XXL'];
   }
   this.add_SpecialCard();
 }
