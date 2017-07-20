@@ -108,7 +108,7 @@ export class MyApp {
   getBackground() {
     this.model.background = localStorage.getItem('backgroundColor');
     if (this.model.background == null) 
-      this.model.background = 'Blue';
+      this.model.background = '#0099FF';
     }
   changeDuration() {
     var duraTion = this.model.duration;
