@@ -31,12 +31,16 @@ export class DataMenuPage {
         value: '#861515',
         title: 'Falu Red'
       },{
-        value: 'rgb(71, 117, 117)',
-        title: 'Ming'
+        value: '#008B8B',
+        title: 'DarkCyan'
       },{
         value: 'rgb(108, 140, 173)',
         title: 'Bermuda Grey'
       },
+      /*{
+        value: 'rgb(71, 117, 117)',
+        title: 'Ming'
+      },*/
     ];
 
     this.deckTime = [20,10,7,5,3];
